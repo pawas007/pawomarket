@@ -1,0 +1,38 @@
+.user_account{
+    a{
+        img{
+            display: block;
+            width: 70px;
+            margin: 5px auto;
+            border-radius: 50%;
+        }
+        color: #ffffff;
+    }
+
+}
+.logout_dash{
+
+    &:hover{
+        background: #f79837;
+        color: white;
+        transition: all 0.3s ease-in-out 0.1s;
+    }
+
+    i{
+        font-size: 14px;
+        text-align: center;
+        width: 25px;
+    }
+    border: 1px solid #E8E8E8;
+    border-top: none;
+    color: #212121;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    padding: 18px 15px;
+    text-transform: uppercase;
+    text-align: left;
+    background: none;
+    width: 100%;
+}
+
