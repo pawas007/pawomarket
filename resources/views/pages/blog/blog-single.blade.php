@@ -7,7 +7,6 @@
 
     ])
 
-
     <section id="blog_single_area" class="ptb-100">
         <div class="container">
             <div class="row">
@@ -32,14 +31,10 @@
 
                                 {!! $singlePost->content !!}
                             </div>
-
-
                             <div class="single_categoris_bottom">
                                 @if($singlePost->tags)
                                     <ul>
-
                                         @foreach($singlePost->tags as $tag)
-
                                             <li><a href="{{route('tag',$tag->slug)}}"> {{$tag->name}}</a></li>
                                         @endforeach
                                     </ul>
@@ -54,64 +49,13 @@
                             <ul class="list_none comment_list">
                                 <li class="comment_info">
                                     <div class="d-flex">
-                                        <div class="comment_user">
-                                            <img src="/assets/img/user/user3.png" alt="user3">
-                                        </div>
                                         <div class="comment_content">
                                             <div class="d-flex">
                                                 <div class="meta_data">
-                                                    <h6><a href="#">Alden Smith</a></h6>
-                                                    <div class="comment-time">MARCH 5, 2018, 6:05 PM</div>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <a href="#" class="comment-reply"><i class="ion-reply-all"></i>Reply</a>
-                                                </div>
-                                            </div>
-                                            <p>We denounce with righteous indignation and dislike men who are so
-                                                beguiled and demoralized by the charms of pleasure of the moment, so
-                                                blinded by desire that the cannot foresee the pain and trouble that.</p>
-                                        </div>
-                                    </div>
-                                    <ul class="children">
-                                        <li class="comment_info">
-                                            <div class="d-flex">
-                                                <div class="comment_user">
-                                                    <img src="/assets/img/user/user1.png" alt="user1">
-                                                </div>
-                                                <div class="comment_content">
-                                                    <div class="d-flex align-items-md-center">
-                                                        <div class="meta_data">
-                                                            <h6><a href="#">Daisy Lana</a></h6>
-                                                            <div class="comment-time">april 8, 2018, 5:15 PM</div>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="#" class="comment-reply"><i
-                                                                    class="ion-reply-all"></i>Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>We denounce with righteous indignation and dislike men who are so
-                                                        beguiled and demoralized by the charms of pleasure of the
-                                                        moment, so blinded by desire that the cannot foresee the pain
-                                                        and trouble that.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="comment_info">
-                                    <div class="d-flex">
-                                        <div class="comment_user">
-                                            <img src="/assets/img/user/user2.png" alt="user2">
-                                        </div>
-                                        <div class="comment_content">
-                                            <div class="d-flex">
-                                                <div class="meta_data">
-                                                    <h6><a href="#">John Becker</a></h6>
+                                                    <h6>John Becker</h6>
                                                     <div class="comment-time">april 15, 2018, 10:30 PM</div>
                                                 </div>
-                                                <div class="ml-auto">
-                                                    <a href="#" class="comment-reply"><i class="ion-reply-all"></i>Reply</a>
-                                                </div>
+
                                             </div>
                                             <p>We denounce with righteous indignation and dislike men who are so
                                                 beguiled and demoralized by the charms of pleasure of the moment, so
@@ -121,27 +65,36 @@
                                 </li>
                             </ul>
                         </div>
+                        <hr>
                         <div class="comment_replay_box">
                             <div class="content_title">
                                 <h3>Write a comment</h3>
                             </div>
-                            <form class="field_form">
+                            <form class="field_form" method="post" action="{{route('add.comment')}}">
+                                @csrf
+                                <input type="number" hidden name="id" value="{{$singlePost->id}}">
+                                <input type="text" hidden name="type" value="post">
                                 <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <input name="name" class="form-control" placeholder="Your Name"
-                                               required="required" type="text">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input name="email" class="form-control" placeholder="Your Email"
-                                               required="required" type="email">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <input name="website" class="form-control" placeholder="Your Website"
-                                               required="required" type="text">
+                                    <div class="form-group col-md-6">
+                                        <input name="name"
+                                               class="form-control @error('name') is-invalid @enderror"
+                                               placeholder="Your Name"
+                                               value="{{ old('name') }}"
+                                               name="name"
+                                               type="text"></div>
+                                    <div class="form-group col-md-6">
+                                        <input name="email"
+                                               class="form-control @error('email') is-invalid @enderror"
+                                               placeholder="Your Email"
+                                               value="{{ old('email') }}"
+                                               type="email" name="email">
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <textarea rows="3" name="message" class="form-control"
-                                                  placeholder="Your Comment" required="required"></textarea>
+                                        <textarea rows="5"
+                                                  name="message"
+                                                  class="form-control @error('message') is-invalid @enderror"
+                                                  placeholder="Your Comment"
+                                        >{{ old('message')}}</textarea>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <button value="Submit" name="submit"
@@ -158,4 +111,7 @@
             </div>
         </div>
     </section>
+
+
+
 @endsection

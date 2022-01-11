@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,14 +15,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::orderBy('id', 'desc')->paginate(10);
-        return view('pages.blog.blog',compact('posts'));
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        return view('pages.blog.blog', compact('posts'));
     }
 
     public function blogList()
     {
-        $posts =  Post::orderBy('id', 'desc')->paginate(10);
-        return view('admin.posts.postList',compact('posts'));
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        return view('admin.posts.postList', compact('posts'));
     }
 
     /**
@@ -53,10 +54,10 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $singlePost = Post::where('slug',$slug)->with('tags')->first();
-        if($singlePost){
-            return view('pages.blog.blog-single',compact('singlePost'));
-        }else{
+        $singlePost = Post::where('slug', $slug)->with('tags')->first();
+        if ($singlePost) {
+            return view('pages.blog.blog-single', compact('singlePost'));
+        } else {
             abort(404);
         }
 
@@ -94,9 +95,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $post->tags()->detach();
         $post->delete();
-
-//        Session::flash('message', "Product created");
+        //        Session::flash('message', "Product created");
         return redirect()->back()->withSuccess('Post deleted');
     }
 }

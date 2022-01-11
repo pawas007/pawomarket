@@ -1,3 +1,310 @@
+.cssload-container * {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.cssload-container {
+  margin: 17px auto 0 auto;
+  max-width: 475px;
+}
+
+.cssload-container ul li {
+  list-style: none;
+}
+
+.cssload-flex-container {
+  display: flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: -moz-flex;
+  flex-direction: row;
+  -o-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cssload-flex-container li {
+  padding: 8px;
+  height: 85px;
+  width: 85px;
+  margin: 25px 17px;
+  position: relative;
+  text-align: center;
+}
+
+.cssload-loading-center {
+  display: inline-block;
+  position: absolute;
+  background: rgba(247, 152, 55, 0.83);
+  height: 25px;
+  width: 25px;
+  left: 31px;
+  top: 31px;
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  animation: pulse 2.2s ease infinite;
+  -o-animation: pulse 2.2s ease infinite;
+  -ms-animation: pulse 2.2s ease infinite;
+  -webkit-animation: pulse 2.2s ease infinite;
+  -moz-animation: pulse 2.2s ease infinite;
+}
+
+.cssload-loading {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-top: 3px;
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+
+.cssload-loading:after, .cssload-loading:before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  display: block;
+  top: 0;
+  background: rgba(247, 152, 55, 0.78);
+  border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  animation-delay: -0.11s;
+  -o-animation-delay: -0.11s;
+  -ms-animation-delay: -0.11s;
+  -webkit-animation-delay: -0.11s;
+  -moz-animation-delay: -0.11s;
+}
+
+.cssload-loading:after {
+  right: 0;
+  animation: square-tr 4.4s ease infinite;
+  -o-animation: square-tr 4.4s ease infinite;
+  -ms-animation: square-tr 4.4s ease infinite;
+  -webkit-animation: square-tr 4.4s ease infinite;
+  -moz-animation: square-tr 4.4s ease infinite;
+  animation-delay: 0.275s;
+  -o-animation-delay: 0.275s;
+  -ms-animation-delay: 0.275s;
+  -webkit-animation-delay: 0.275s;
+  -moz-animation-delay: 0.275s;
+}
+
+.cssload-loading:before {
+  animation: square-tl 4.4s ease infinite;
+  -o-animation: square-tl 4.4s ease infinite;
+  -ms-animation: square-tl 4.4s ease infinite;
+  -webkit-animation: square-tl 4.4s ease infinite;
+  -moz-animation: square-tl 4.4s ease infinite;
+  animation-delay: 0.275s;
+  -o-animation-delay: 0.275s;
+  -ms-animation-delay: 0.275s;
+  -webkit-animation-delay: 0.275s;
+  -moz-animation-delay: 0.275s;
+}
+
+.cssload-loading.cssload-two {
+  position: relative;
+  top: -68px;
+}
+
+.cssload-loading.cssload-two:after, .cssload-loading.cssload-two:before {
+  bottom: 0;
+  top: initial;
+}
+
+.cssload-loading.cssload-two:after {
+  animation: square-br 4.4s ease infinite;
+  -o-animation: square-br 4.4s ease infinite;
+  -ms-animation: square-br 4.4s ease infinite;
+  -webkit-animation: square-br 4.4s ease infinite;
+  -moz-animation: square-br 4.4s ease infinite;
+  animation-direction: reverse;
+  -o-animation-direction: reverse;
+  -ms-animation-direction: reverse;
+  -webkit-animation-direction: reverse;
+  -moz-animation-direction: reverse;
+}
+
+.cssload-loading.cssload-two:before {
+  animation: square-bl 4.4s ease infinite;
+  -o-animation: square-bl 4.4s ease infinite;
+  -ms-animation: square-bl 4.4s ease infinite;
+  -webkit-animation: square-bl 4.4s ease infinite;
+  -moz-animation: square-bl 4.4s ease infinite;
+  animation-direction: reverse;
+  -o-animation-direction: reverse;
+  -ms-animation-direction: reverse;
+  -webkit-animation-direction: reverse;
+  -moz-animation-direction: reverse;
+}
+
+@keyframes square-tl {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, 53.5px);
+  }
+  50% {
+    transform: translate(53.5px, 53.5px);
+  }
+  75% {
+    transform: translate(53.5px, 0);
+  }
+}
+@-webkit-keyframes square-tl {
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(0, 53.5px);
+  }
+  50% {
+    -webkit-transform: translate(53.5px, 53.5px);
+  }
+  75% {
+    -webkit-transform: translate(53.5px, 0);
+  }
+}
+@keyframes square-bl {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -53.5px);
+  }
+  50% {
+    transform: translate(53.5px, -53.5px);
+  }
+  75% {
+    transform: translate(53.5px, 0);
+  }
+}
+@-webkit-keyframes square-bl {
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(0, -53.5px);
+  }
+  50% {
+    -webkit-transform: translate(53.5px, -53.5px);
+  }
+  75% {
+    -webkit-transform: translate(53.5px, 0);
+  }
+}
+@keyframes square-tr {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-53.5px, 0);
+  }
+  50% {
+    transform: translate(-53.5px, 53.5px);
+  }
+  75% {
+    transform: translate(0, 53.5px);
+  }
+}
+@-webkit-keyframes square-tr {
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(-53.5px, 0);
+  }
+  50% {
+    -webkit-transform: translate(-53.5px, 53.5px);
+  }
+  75% {
+    -webkit-transform: translate(0, 53.5px);
+  }
+}
+@keyframes square-br {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-53.5px, 0);
+  }
+  50% {
+    transform: translate(-53.5px, -53.5px);
+  }
+  75% {
+    transform: translate(0, -53.5px);
+  }
+}
+@-webkit-keyframes square-br {
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(-53.5px, 0);
+  }
+  50% {
+    -webkit-transform: translate(-53.5px, -53.5px);
+  }
+  75% {
+    -webkit-transform: translate(0, -53.5px);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(inherit) rotate(45deg);
+  }
+  75% {
+    transform: scale(0.25) rotate(45deg);
+  }
+}
+@-webkit-keyframes pulse {
+  0%, 100% {
+    -webkit-transform: scale(inherit) rotate(45deg);
+  }
+  75% {
+    -webkit-transform: scale(0.25) rotate(45deg);
+  }
+}
 .user_account a {
   color: #ffffff;
 }
@@ -30,4 +337,15 @@
   font-size: 14px;
   text-align: center;
   width: 25px;
+}
+
+.logo_head {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #f79837;
+  font-size: xx-large;
+}
+
+textarea.is-invalid {
+  border-color: #dc3545 !important;
 }

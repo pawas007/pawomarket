@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,15 +17,22 @@ use App\Http\Controllers\TagController;
 */
 
 
-
-
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('blog',[PostController::class,'index'] )->name('blog');
-Route::get('blog/single/{slug}',[PostController::class,'show'])->name('single.blog');
-Route::get('blog/tag/{slug}',[TagController::class,'show'])->name('tag');
 
-Route::get('blog/post/destroy/{id}',[PostController::class,'destroy'] )->name('post.destroy');
-Route::get('blog/post/edit/{id}',[PostController::class,'edit'] )->name('post.edit');
+
+//Blog
+Route::get('blog', [PostController::class, 'index'])->name('blog');
+Route::get('blog/single/{slug}', [PostController::class, 'show'])->name('single.blog');
+Route::get('blog/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+Route::get('blog/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+//Blog end
+//Tags end
+Route::get('blog/tag/{slug}', [TagController::class, 'tag'])->name('tag');
+//Tags end
+Route::post('comment/create', [CommentController::class, 'create'])->name('add.comment');
+
+
+
 
 
 
@@ -33,7 +41,7 @@ Route::get('contact-us', function () {
 })->name('contacts');
 
 
-Route::group(['prefix' => 'account','middleware' => ['auth']], function () {
+Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
     Route::get('dashboard', function () {
         return view('account.pages.dashboard');
     })->name('dashboard');
@@ -46,15 +54,11 @@ Route::group(['prefix' => 'account','middleware' => ['auth']], function () {
 });
 
 
-
-
-
-
-Route::group(['prefix' => 'admin','middleware' => ['auth']], function () {
-    Route::get('blog-list',[PostController::class,'blogList'])->name('blog-list');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('blog-list', [PostController::class, 'blogList'])->name('blog-list');
 });
 
-//AUTH
+//Auth & Social
 Auth::routes();
 Route::get('auth/{provider}', [SocialAuthController::class, 'redirectToProvider']);
 Route::get('auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback']);

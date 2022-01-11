@@ -49,7 +49,7 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function tag($slug)
     {
         $posts = Post::whereHas('tags', function($query) use ($slug) {
             $query->whereSlug($slug);
