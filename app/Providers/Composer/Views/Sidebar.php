@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers\Composer\Views;
+use App\Models\CategoryPost;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Facades\View;
@@ -27,10 +28,11 @@ class Sidebar extends ServiceProvider
     {
         $tags = Tag::all();
         $lastPost = Post::orderBy('id', 'desc')->take(3)->get();
+        $categories = CategoryPost::with('posts')->get();
         View::composer([
             'pages.partials.sidebar.sidebar',
-        ], function ($view) use ($tags,$lastPost) {
-            return $view->with(['tags'=> $tags,'lastPost'=> $lastPost]);
+        ], function ($view) use ($tags,$lastPost,$categories) {
+            return $view->with(['tags'=> $tags,'lastPost'=> $lastPost,'categories'=> $categories ]);
         });
 
     }

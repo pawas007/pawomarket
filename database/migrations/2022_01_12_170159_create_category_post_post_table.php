@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostTagTable extends Migration
+class CreateCategoryPostPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePostTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_tag', function (Blueprint $table) {
+        Schema::create('category_post_post', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id')->constrained();
-            $table->foreignId('tag_id')->constrained();
-            //$table->foreignId('post_id')->constrained()->references('id')->on('posts')->onDelete('cascade');
-            //$table->foreignId('tag_id')->constrained()->references('id')->on('tags')->onDelete('cascade');
+            $table->foreignId('category_post_id')->constrained();
         });
     }
 
@@ -29,6 +27,6 @@ class CreatePostTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('category_post_post');
     }
 }

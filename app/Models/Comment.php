@@ -25,5 +25,13 @@ class Comment extends Model
     }
 
 
+    protected $appends = ['date'];
+    public function getdateAttribute(): string
+    {
+        $time =  date('d M, Y h:i A', strtotime($this->created_at));
+        return ( $time);
+    }
+
+
 
 }

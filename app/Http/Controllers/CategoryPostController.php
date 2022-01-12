@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\CategoryPost;
 use App\Models\Post;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class CategoryPostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-
-
-
-
+        //
     }
 
     /**
@@ -32,6 +28,13 @@ class TagController extends Controller
         //
     }
 
+
+    public function postCategory($slug){
+        $posts = Post::whereHas('categories', function($query) use ($slug) {
+            $query->whereSlug($slug);
+        })->orderBy('id', 'desc')->paginate(10);
+        return view('pages.blog.blog',compact('posts'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -46,24 +49,21 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\CategoryPost  $categoryPost
      * @return \Illuminate\Http\Response
      */
-    public function postTag($slug)
+    public function show(CategoryPost $categoryPost)
     {
-        $posts = Post::whereHas('tags', function($query) use ($slug) {
-            $query->whereSlug($slug);
-        })->orderBy('id', 'desc')->paginate(10);
-        return view('pages.blog.blog',compact('posts'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\CategoryPost  $categoryPost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(CategoryPost $categoryPost)
     {
         //
     }
@@ -72,10 +72,10 @@ class TagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\CategoryPost  $categoryPost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, CategoryPost $categoryPost)
     {
         //
     }
@@ -83,10 +83,10 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tag  $tag
+     * @param  \App\Models\CategoryPost  $categoryPost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(CategoryPost $categoryPost)
     {
         //
     }

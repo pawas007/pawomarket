@@ -12,7 +12,6 @@
             <th scope="col">Title</th>
             <th scope="col">Created</th>
             <th scope="col">Actions</th>
-
         </tr>
         </thead>
         <tbody>
@@ -21,9 +20,7 @@
                 <th scope="col">{{$post->id}}</th>
                 <th scope="col">{{$post->title}}</th>
                 <th scope="col">{{$post->create}}</th>
-
                 <th scope="col"><a href="{{route('post.destroy',$post->id)}}">Delete</a> | <a href="{{route('post.edit',$post->id)}}">Edit</a></th>
-
             </tr>
         @endforeach
         </tbody>

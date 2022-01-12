@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +19,9 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         $this->call([
             TagSeeder::class,
-            PostSeeder::class
+            PostSeeder::class,
+            CommentSeader::class,
+           CategoryPostSeeder::class
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

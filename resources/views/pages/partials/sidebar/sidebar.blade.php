@@ -21,33 +21,11 @@
             <h3 class="sidebar-title">Categories</h3>
             <div class="category-post">
                 <ul>
-                    <li>
-                        <a href="#" class="selected">All <span>(4)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Accesssories <span>(3)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Box <span>(5)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">chair <span>(2)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Deco <span>(6)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Furniture <span>(4)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Glass <span>(1)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Sofa <span>(3)</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="">Table <span>(4)</span> </a>
-                    </li>
+                    @foreach($categories as $category)
+                        <li>
+                            <a href="{{ route('post.category',['slug' => $category->slug])}}" class="">{{$category->name}} <span>(   {{count($category->posts)}})</span> </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -55,47 +33,45 @@
 
         @if($lastPost)
 
-        <div class="sidebar-widget mt-40px">
-            <h3 class="sidebar-title">Recent Post</h3>
-            <div class="recent-post-widget">
+            <div class="sidebar-widget mt-40px">
+                <h3 class="sidebar-title">Recent Post</h3>
+                <div class="recent-post-widget">
 
 
-
-
-                @foreach($lastPost as $post)
-                    <div class="recent-single-post d-flex">
-                        @if($post->image)
-                        <div class="thumb-side img-zoom-hover">
-                            <a href="{{ route('single.blog',['slug' => $post->slug])}}">
-                                <img src="{{ $post->image}}"
-                                                            alt="{{ $post->title}}"></a>
+                    @foreach($lastPost as $post)
+                        <div class="recent-single-post d-flex">
+                            @if($post->image)
+                                <div class="thumb-side img-zoom-hover">
+                                    <a href="{{ route('single.blog',['slug' => $post->slug])}}">
+                                        <img src="{{ $post->image}}"
+                                             alt="{{ $post->title}}"></a>
+                                </div>
+                            @endif
+                            <div class="media-side">
+                                <h5>
+                                    <a href="{{ route('single.blog',['slug' => $post->slug])}}">{{ $post->title}}</a>
+                                </h5>
+                                <span class="date">{{ $post->create}}</span>
+                            </div>
                         </div>
-                        @endif
-                        <div class="media-side">
-                            <h5>
-                                <a href="{{ route('single.blog',['slug' => $post->slug])}}">{{ $post->title}}</a>
-                            </h5>
-                            <span class="date">{{ $post->create}}</span>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-        <!-- Sidebar single item -->
+            <!-- Sidebar single item -->
 
         @endif
         @if($tags)
-        <div class="sidebar-widget mt-40px">
-            <h3 class="sidebar-title">Tags</h3>
-            <div class="sidebar-widget-tag d-inline-block">
-                <ul>
-                    @foreach($tags as $tag)
-                        <li><a href="{{route('tag',$tag->slug)}}"> {{$tag->name}}</a></li>
-                    @endforeach
-                </ul>
+            <div class="sidebar-widget mt-40px">
+                <h3 class="sidebar-title">Tags</h3>
+                <div class="sidebar-widget-tag d-inline-block">
+                    <ul>
+                        @foreach($tags as $tag)
+                            <li><a href="{{route('post.tag',$tag->slug)}}"> {{$tag->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-        </div>
-        @endif
+    @endif
     <!-- Sidebar single item -->
         <!-- Sidebar single item -->
         <div class="sidebar-widget mt-40px">

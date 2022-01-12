@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,7 @@ class PostController extends Controller
 
     public function blogList()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        $posts = Post::with('categories')->orderBy('id', 'desc')->paginate(10);
         return view('admin.posts.postList', compact('posts'));
     }
 
@@ -54,7 +56,7 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $singlePost = Post::where('slug', $slug)->with('tags')->first();
+        $singlePost = Post::where('slug', $slug)->with('tags','comments','categories')->first();
         if ($singlePost) {
             return view('pages.blog.blog-single', compact('singlePost'));
         } else {
@@ -72,6 +74,18 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         dd('edit');
+    }
+
+
+    public function commentCreate(CommentRequest $request)
+    {
+        $comment= new Comment();
+        $comment->commentable()->associate(Post::findOrFail($request->id));
+        $comment->email = $request->message;
+        $comment->message = $request->message;
+        $comment->name = $request->name;
+        $comment->save();
+        return redirect()->back()->withSuccess('Comment created');
     }
 
     /**
