@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3dc1c521a4a2269e8ba0f15f8655198",
+    "content-hash": "25bbfdd63800782974041f87a751d891",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -290,32 +290,28 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042"
+                "reference": "9c50f840f257bbb941e6f4a0e94ccf5db5c3f76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e864bbf5904cb8f5bb334f99209b48018522f042",
-                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/9c50f840f257bbb941e6f4a0e94ccf5db5c3f76c",
+                "reference": "9c50f840f257bbb941e6f4a0e94ccf5db5c3f76c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
-                "phpstan/phpstan": "^0.11.8",
-                "phpunit/phpunit": "^8.2"
+                "doctrine/coding-standard": "^9.0",
+                "phpstan/phpstan": "1.3",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "vimeo/psalm": "^4.11"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\Lexer\\": "lib/Doctrine/Common/Lexer"
@@ -350,7 +346,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/lexer/issues",
-                "source": "https://github.com/doctrine/lexer/tree/1.2.1"
+                "source": "https://github.com/doctrine/lexer/tree/1.2.2"
             },
             "funding": [
                 {
@@ -366,7 +362,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-25T17:44:05+00:00"
+            "time": "2022-01-12T08:27:12+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -428,6 +424,64 @@
                 }
             ],
             "time": "2022-01-06T05:35:07+00:00"
+        },
+        {
+            "name": "dymantic/laravel-instagram-feed",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dymantic/laravel-instagram-feed.git",
+                "reference": "2d4844c3de757d606641deaf3fff1677ee943bb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dymantic/laravel-instagram-feed/zipball/2d4844c3de757d606641deaf3fff1677ee943bb6",
+                "reference": "2d4844c3de757d606641deaf3fff1677ee943bb6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0.1",
+                "illuminate/config": "^7.0 | ^8.0",
+                "illuminate/console": "^7.0 | ^8.0",
+                "illuminate/database": "^7.0 | ^8.0",
+                "illuminate/http": "^7.0 | ^8.0",
+                "illuminate/mail": "^7.0 | ^8.0",
+                "illuminate/support": "^7.0 | ^8.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dymantic\\InstagramFeed\\InstagramFeedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dymantic\\InstagramFeed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Joyner",
+                    "email": "joyner.michael@gmail.com"
+                }
+            ],
+            "description": "Fetches the instagram feed for given authenticated profiles",
+            "support": {
+                "issues": "https://github.com/Dymantic/laravel-instagram-feed/issues",
+                "source": "https://github.com/Dymantic/laravel-instagram-feed/tree/v3.0.0"
+            },
+            "time": "2021-10-01T02:06:29+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -850,32 +904,29 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.1.0",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "089edd38f5b8abba6cb01567c2a8aaa47cec4c72"
+                "reference": "1afdd860a2566ed3c2b0b4a3de6e23434a79ec85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/089edd38f5b8abba6cb01567c2a8aaa47cec4c72",
-                "reference": "089edd38f5b8abba6cb01567c2a8aaa47cec4c72",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/1afdd860a2566ed3c2b0b4a3de6e23434a79ec85",
+                "reference": "1afdd860a2566ed3c2b0b4a3de6e23434a79ec85",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2.5 || ^8.0",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0",
-                "ralouphie/getallheaders": "^3.0"
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
             },
             "provide": {
-                "psr/http-factory-implementation": "1.0",
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
-                "http-interop/http-factory-tests": "^0.9",
-                "phpunit/phpunit": "^8.5.8 || ^9.3.10"
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
             },
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
@@ -883,13 +934,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\Psr7\\": "src/"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -925,11 +979,6 @@
                     "name": "Tobias Schultze",
                     "email": "webmaster@tubo-world.de",
                     "homepage": "https://github.com/Tobion"
-                },
-                {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com",
-                    "homepage": "https://sagikazarmark.hu"
                 }
             ],
             "description": "PSR-7 message implementation that also provides common utility methods",
@@ -945,7 +994,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.1.0"
+                "source": "https://github.com/guzzle/psr7/tree/1.8.3"
             },
             "funding": [
                 {
@@ -961,7 +1010,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-06T17:43:30+00:00"
+            "time": "2021-10-05T13:56:00+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2331,6 +2380,129 @@
             "time": "2021-04-09T13:42:10+00:00"
         },
         {
+            "name": "phpfastcache/phpfastcache",
+            "version": "9.0.0-beta5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPSocialNetwork/phpfastcache.git",
+                "reference": "c9ef97528eb34fe6f5f7f166c7ddcde4478bce62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPSocialNetwork/phpfastcache/zipball/c9ef97528eb34fe6f5f7f166c7ddcde4478bce62",
+                "reference": "c9ef97528eb34fe6f5f7f166c7ddcde4478bce62",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.0",
+                "psr/cache": "^2.0||^3.0",
+                "psr/simple-cache": "^1.0."
+            },
+            "conflict": {
+                "doctrine/couchdb": "<dev-master#9eeb9e5"
+            },
+            "require-dev": {
+                "ext-gettext": "*",
+                "jetbrains/phpstorm-stubs": "dev-master",
+                "league/climate": "^3.5",
+                "phpmd/phpmd": "@stable",
+                "phpstan/phpstan": "^0.12.98",
+                "squizlabs/php_codesniffer": "~3.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "~3.0",
+                "doctrine/couchdb": "^dev-master#9eeb9e5",
+                "ext-apcu": "*",
+                "ext-couchbase": "*",
+                "ext-couchbase_v3": "*",
+                "ext-intl": "*",
+                "ext-leveldb": "*",
+                "ext-memcache": "*",
+                "ext-memcached": "*",
+                "ext-mongodb": "*",
+                "ext-redis": "*",
+                "ext-sqlite": "*",
+                "ext-wincache": "*",
+                "ext-xcache": "*",
+                "google/cloud-firestore": "^1.20",
+                "mongodb/mongodb": "^1.9",
+                "phpfastcache/phpssdb": "~1.1.0",
+                "predis/predis": "^1.1",
+                "triagens/arangodb": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phpfastcache\\": "lib/Phpfastcache/",
+                    "Phpfastcache\\Tests\\": "tests/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Georges.L",
+                    "email": "contact@geolim4.com",
+                    "homepage": "https://github.com/Geolim4",
+                    "role": "Actual Project Manager/Developer"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPSocialNetwork/phpfastcache/graphs/contributors"
+                }
+            ],
+            "description": "PHP Abstract Cache Class - Reduce your database call using cache system. Phpfastcache handles a lot of drivers such as Apc(u), Cassandra, CouchBase, Couchdb, Mongodb, Files, (P)redis, Leveldb, Memcache(d), Ssdb, Sqlite, Wincache, Xcache, Zend Data Cache.",
+            "homepage": "https://www.phpfastcache.com",
+            "keywords": [
+                "ArangoDb",
+                "LevelDb",
+                "abstract",
+                "apc",
+                "apcu",
+                "cache",
+                "cache class",
+                "caching",
+                "cassandra",
+                "cookie",
+                "couchbase",
+                "couchdb",
+                "dynamodb",
+                "files cache",
+                "memcache",
+                "memcached",
+                "mongodb",
+                "mysql cache",
+                "pdo cache",
+                "php cache",
+                "predis",
+                "redis",
+                "ssdb",
+                "wincache",
+                "xcache",
+                "zend",
+                "zend data cache",
+                "zend disk cache",
+                "zend memory cache",
+                "zend server"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPSocialNetwork/phpfastcache/issues",
+                "source": "https://github.com/PHPSocialNetwork/phpfastcache",
+                "wiki": "https://github.com/PHPSocialNetwork/phpfastcache/wiki"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/geolim4",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-09-29T21:57:10+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.8.1",
             "source": {
@@ -2400,6 +2572,55 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
+            },
+            "time": "2021-02-03T23:26:27+00:00"
         },
         {
             "name": "psr/container",
@@ -2550,61 +2771,6 @@
                 "source": "https://github.com/php-fig/http-client/tree/master"
             },
             "time": "2020-06-29T06:28:15+00:00"
-        },
-        {
-            "name": "psr/http-factory",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
-                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0",
-                "psr/http-message": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
-            "keywords": [
-                "factory",
-                "http",
-                "message",
-                "psr",
-                "psr-17",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/master"
-            },
-            "time": "2019-04-30T12:38:16+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2834,6 +3000,62 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.10.12"
             },
             "time": "2021-11-30T14:05:36+00:00"
+        },
+        {
+            "name": "raiym/instagram-php-scraper",
+            "version": "v0.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/postaddictme/instagram-php-scraper.git",
+                "reference": "a2a508bc0ea2859080cd9435fdfd3634507ff6a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/postaddictme/instagram-php-scraper/zipball/a2a508bc0ea2859080cd9435fdfd3634507ff6a3",
+                "reference": "a2a508bc0ea2859080cd9435fdfd3634507ff6a3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "guzzlehttp/psr7": "^1.7",
+                "php": ">=7.2",
+                "psr/http-client": "~1.0",
+                "psr/simple-cache": "~1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.2",
+                "phpfastcache/phpfastcache": "^7.1",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InstagramScraper\\": "src/InstagramScraper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "raiym",
+                    "email": "r.kapishev@gmail.com"
+                }
+            ],
+            "description": "Instagram PHP Scraper. Get account information, photos and videos without any authorization",
+            "homepage": "https://github.com/raiym/instagram-php-scraper",
+            "keywords": [
+                "instagram",
+                "scraper"
+            ],
+            "support": {
+                "email": "r.kapishev@gmail.com",
+                "issues": "https://github.com/postaddictme/instagram-php-scraper/issues",
+                "source": "https://github.com/postaddictme/instagram-php-scraper/tree/v0.12.0"
+            },
+            "time": "2021-10-18T09:29:21+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -8108,5 +8330,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }

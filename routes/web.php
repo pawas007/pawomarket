@@ -32,9 +32,15 @@ Route::get('blog/tag/{slug}', [TagController::class, 'postTag'])->name('post.tag
 Route::get('blog/category/{slug}', [CategoryPostController::class, 'postCategory'])->name('post.category');
 
 //Tags end
-Route::get('contact-us', function () {
-    return view('pages.contact-us');
-})->name('contacts');
+Route::get('contact-us', function () {return view('pages.contact-us');})->name('contacts');
+Route::get('about-us', function () {return view('pages.about-us');})->name('about');
+
+Route::get('faq', function () {return view('pages.faq');})->name('faq');
+Route::get('privacy-policy', function () {return view('pages.privacy-policy');})->name('privacy-policy');
+Route::get('shop', function () {return view('pages.shop.shop');})->name('shop');
+
+
+
 
 
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {

@@ -4,10 +4,7 @@
     'currentPage' => 'Contact Us'
 
   ])
-
-
-
-
+@section('title', 'Contact Us')
     <section id="contact_area" class="ptb-100">
         <div class="container">
             <div class="row">
@@ -96,10 +93,4 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
 @endsection

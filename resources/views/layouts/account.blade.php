@@ -6,8 +6,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>PawoMarket</title>
-    <!-- Scripts -->
+    <title>{{env('APP_NAME')}}| @yield('title')</title>
+
+@include('layouts.partials.favicon')
+<!-- Scripts -->
     <script src="{{ asset('assets/js/theme/jquery-3.6.0.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/owl.carousel.min.js') }}" defer></script>

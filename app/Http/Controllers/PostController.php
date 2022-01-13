@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
+use App\Http\Services\InstagramProvider;
 use App\Models\Comment;
 use App\Models\Post;
+
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
+
 
 
 class PostController extends Controller
@@ -17,6 +21,11 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        $img = new InstagramProvider();
+
+        Cache::put('instagram',$img->getPosts());
+
         $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('pages.blog.blog', compact('posts'));
     }
@@ -56,7 +65,7 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $singlePost = Post::where('slug', $slug)->with('tags','comments','categories')->first();
+        $singlePost = Post::where('slug', $slug)->with('tags', 'comments', 'categories')->first();
         if ($singlePost) {
             return view('pages.blog.blog-single', compact('singlePost'));
         } else {
@@ -79,7 +88,7 @@ class PostController extends Controller
 
     public function commentCreate(CommentRequest $request)
     {
-        $comment= new Comment();
+        $comment = new Comment();
         $comment->commentable()->associate(Post::findOrFail($request->id));
         $comment->email = $request->message;
         $comment->message = $request->message;

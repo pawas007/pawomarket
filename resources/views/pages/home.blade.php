@@ -1,9 +1,9 @@
 @push('scripts')
     <script src="{{ asset('assets/js/theme/timer.js') }}" defer></script>
 @endpush
+@section('title', 'Home')
 @extends('layouts.app')
 @section('pages')
-
 
     <!-- Banner Area -->
     <section id="banner_one">

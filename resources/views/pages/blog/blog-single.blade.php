@@ -6,7 +6,9 @@
     'currentPage' => $singlePost->title
 
     ])
-    <section id="blog_single_area" class="ptb-100">
+
+@section('title', $singlePost->title)
+<section id="blog_single_area" class="ptb-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">

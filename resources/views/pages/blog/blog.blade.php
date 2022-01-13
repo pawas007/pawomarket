@@ -4,6 +4,7 @@
     'currentPage' => 'Blog'
 
   ])
+@section('title', 'Blog')
     <section id="blog_list_area" class="ptb-100">
         <div class="container">
             <div class="row">

@@ -178,7 +178,8 @@ return [
         /*
          * View composers
          */
-        App\Providers\Composer\Views\Sidebar::class
+        App\Providers\Composer\Views\Sidebar::class,
+        \App\Providers\Composer\Views\InstagramProvider::class
     ],
 
     /*
