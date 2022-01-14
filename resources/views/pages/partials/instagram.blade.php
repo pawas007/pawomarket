@@ -1,5 +1,5 @@
 <!-- Instagram Arae -->
-@if($lastPost)
+@if($instagramLastPost )
     <section id="instagram_area_one">
         <div class="container-fluid">
             <div class="row">
@@ -13,9 +13,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="instagram_post_slider owl-carousel owl-theme">
-                        @foreach($lastPost as $instagramItem)
+                        @foreach($instagramLastPost  as $instagramItem)
                         <div class="instgram_post">
-                            <a href="{{$instagramItem['link']}}">
+                            <a href="{{$instagramItem['link']}}" target="_blank">
                                 <i class="fab fa-instagram"></i>
                                 <img src="/assets/img/instagram/{{$instagramItem['img']}}" alt="instagram" />
                             </a>

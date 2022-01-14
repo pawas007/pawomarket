@@ -1,10 +1,6 @@
 @extends('layouts.account')
 @section('pages')
-    @if(session('success'))
-        <div class="alert alert-danger">
-            {{session('success')}}
-        </div>
-    @endif
+@include('pages.partials.messages')
     <table class="table table-hover">
         <thead>
         <tr>

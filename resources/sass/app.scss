@@ -50,3 +50,34 @@ textarea.is-invalid{
     border-color: #dc3545 !important;
 
 }
+
+
+.owl-carousel .owl-item img{
+    height: clamp(330px,370px,400px);
+    object-fit: cover;
+}
+
+.message-action{
+    position: relative;
+    cursor: pointer;
+    &:hover{
+        .content{
+            display: block;
+        }
+    }
+    .content{
+       position: absolute;
+        -webkit-box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
+        box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
+        width: 345px;
+        left: -267px;
+        bottom: -85px;
+        background: white;
+        position: absolute;
+        padding: 11px;
+        display: none;
+        z-index: 10;
+        transition: .4s;
+    }
+}

@@ -73,62 +73,24 @@
             </div>
     @endif
     <!-- Sidebar single item -->
+
+
+    @if($instagramLastPost )
         <!-- Sidebar single item -->
         <div class="sidebar-widget mt-40px">
             <h3 class="sidebar-title">Instagram Widget</h3>
             <div class="flicker-widget">
                 <ul>
+                    @foreach($instagramLastPost  as $instagramItem)
                     <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post1.png" alt="instagram"></a>
+                        <a class="image-link" href="{{$instagramItem['link']}}" target="_blank">
+                            <img src="/assets/img/instagram/{{$instagramItem['img']}}" alt="instagram"></a>
                     </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post2.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post3.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post4.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post5.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post6.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post7.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post8.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post9.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post10.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post11.png" alt="instagram"></a>
-                    </li>
-                    <li class="img-zoom-hover">
-                        <a class="image-link" href="https://www.instagram.com/" target="_blank"><img
-                                src="/assets/img/instagram/post12.png" alt="instagram"></a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
         <!-- Sidebar single item -->
+        @endif
     </div>
 </div>

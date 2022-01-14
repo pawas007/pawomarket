@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Login')
 @section('pages')
 
     @include('pages.partials.banner',[

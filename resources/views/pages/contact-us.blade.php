@@ -48,34 +48,71 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-8">
+
                     <div class="contact_form_one">
                         <h3>Get In Touch</h3>
-                        <form action="#!">
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
+                            </div>
+                        @endif
+                        <form class="field_form" method="post" action="{{route('create.contacts')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name*">
+                                        <input type="text"
+                                               class="form-control @error('name') is-invalid @enderror"
+                                               placeholder="Name*"
+                                               name="name"
+                                               value="{{ old('name') }}"
+
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email*">
+                                        <input type="text"
+                                               class="form-control @error('email') is-invalid @enderror"
+                                               placeholder="Email*"
+                                               name="email"
+                                               value="{{ old('email') }}"
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="Phone*">
+                                        <input type="text"
+                                               name="phone"
+                                               placeholder="Phone*"
+                                               class="form-control @error('phone') is-invalid @enderror"
+                                               value="{{ old('phone') }}"
+
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Subject*">
+                                        <input type="text"
+                                               name="subject"
+                                               placeholder="Subject*"
+                                               class="form-control @error('subject') is-invalid @enderror"
+                                               value="{{ old('subject')}}"
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
-                                        <textarea rows="7" class="form-control" placeholder="Message*"></textarea>
+                                        <textarea rows="7"
+                                                  name="message"
+                                                  placeholder="Message*"
+                                                  class="form-control @error('message') is-invalid @enderror"
+                                        >
+                                            {{ old('message') }}
+
+                                        </textarea>
                                     </div>
                                     <div class="submit_bitton_contact_one">
                                         <button class="theme-btn-one btn-black-overlay btn_md">Submit</button>

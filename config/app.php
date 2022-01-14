@@ -179,7 +179,8 @@ return [
          * View composers
          */
         App\Providers\Composer\Views\Sidebar::class,
-        \App\Providers\Composer\Views\InstagramProvider::class
+        \App\Providers\Composer\Views\InstagramProvider::class,
+        Telegram\Bot\Laravel\TelegramServiceProvider::class
     ],
 
     /*
@@ -234,7 +235,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
     ],
 
 ];

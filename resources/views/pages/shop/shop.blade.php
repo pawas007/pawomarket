@@ -431,4 +431,7 @@
         </div>
     </div>
 </section>
+
+@include('pages.partials.instagram')
+
 @endsection

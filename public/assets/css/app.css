@@ -349,3 +349,30 @@
 textarea.is-invalid {
   border-color: #dc3545 !important;
 }
+
+.owl-carousel .owl-item img {
+  height: 370px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.message-action {
+  position: relative;
+  cursor: pointer;
+}
+.message-action:hover .content {
+  display: block;
+}
+.message-action .content {
+  position: absolute;
+  box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  width: 345px;
+  left: -267px;
+  bottom: -85px;
+  background: white;
+  position: absolute;
+  padding: 11px;
+  display: none;
+  z-index: 10;
+  transition: 0.4s;
+}

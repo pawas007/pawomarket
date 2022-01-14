@@ -1,10 +1,6 @@
 @extends('layouts.account')
+@section('title', 'Dashboard')
 @section('pages')
-
-
-
-
-
     <div  id="vendor_dashboard">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-12">
@@ -117,9 +113,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 @endsection

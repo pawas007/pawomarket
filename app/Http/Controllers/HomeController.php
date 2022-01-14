@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $lastPost = Post::orderBy('id', 'desc')->take(3)->get();
+        return view('pages.home',compact('lastPost'));
     }
 }

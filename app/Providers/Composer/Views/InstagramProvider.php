@@ -26,11 +26,12 @@ class InstagramProvider extends ServiceProvider
      */
     public function boot()
     {
-        $lastPost = Cache::get('instagram');
+        $instagramLastPost = Cache::get('instagram');
         View::composer([
             'pages.partials.instagram',
-        ], function ($view) use ($lastPost) {
-            return $view->with(['lastPost'=> $lastPost]);
+            'pages.partials.sidebar.sidebar',
+        ], function ($view) use ($instagramLastPost ) {
+            return $view->with(['instagramLastPost'=> $instagramLastPost ]);
         });
     }
 }

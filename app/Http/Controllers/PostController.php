@@ -22,9 +22,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $img = new InstagramProvider();
 
-        Cache::put('instagram',$img->getPosts());
 
         $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('pages.blog.blog', compact('posts'));

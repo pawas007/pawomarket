@@ -32,11 +32,7 @@
     <div class="content_title">
         <h3>Write a comment</h3>
     </div>
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
+    @include('pages.partials.messages')
     <form class="field_form" method="post" action="{{route('add.post.comment')}}">
         @csrf
         <input type="number" hidden name="id" value="{{$id}}">
