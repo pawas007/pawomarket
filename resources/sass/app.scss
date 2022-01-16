@@ -1,29 +1,33 @@
 @import "preloader";
-.user_account{
-    a{
-        img{
+
+.user_account {
+    a {
+        img {
             display: block;
             width: 70px;
             margin: 5px auto;
             border-radius: 50%;
         }
+
         color: #ffffff;
     }
 
 }
-.logout_dash{
 
-    &:hover{
+.logout_dash {
+
+    &:hover {
         background: #f79837;
         color: white;
         transition: all 0.3s ease-in-out 0.1s;
     }
 
-    i{
+    i {
         font-size: 14px;
         text-align: center;
         width: 25px;
     }
+
     border: 1px solid #E8E8E8;
     border-top: none;
     color: #212121;
@@ -37,7 +41,7 @@
     width: 100%;
 }
 
-.logo_head{
+.logo_head {
 
     font-family: "Poppins", sans-serif;
     font-weight: bold;
@@ -46,27 +50,29 @@
 }
 
 
-textarea.is-invalid{
+textarea.is-invalid {
     border-color: #dc3545 !important;
 
 }
 
 
-.owl-carousel .owl-item img{
-    height: clamp(330px,370px,400px);
+.owl-carousel .owl-item img {
+    height: clamp(330px, 370px, 400px);
     object-fit: cover;
 }
 
-.message-action{
+.message-action {
     position: relative;
     cursor: pointer;
-    &:hover{
-        .content{
+
+    &:hover {
+        .content {
             display: block;
         }
     }
-    .content{
-       position: absolute;
+
+    .content {
+        position: absolute;
         -webkit-box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
         -moz-box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
         box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -80,4 +86,61 @@ textarea.is-invalid{
         z-index: 10;
         transition: .4s;
     }
+}
+
+.sidebar-admin {
+    margin-top: 30px;
+}
+.drop_down_box {
+    margin-bottom: 20px;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 7px;
+    .drop_down_trigger {
+        font-weight: 600;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 5px;
+        i {
+            transition: .3s;
+        }
+    }
+    .drop_down_container {
+        display: none;
+        border-top: 1px solid #ced4da;
+        width: 100%;
+        padding: 10px 0;
+        .list-container{
+            max-height: 300px;
+            overflow-y: scroll;
+            .form-check{
+                *{
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+            }
+        }
+    }
+
+    &.drop_active {
+        .drop_down_container {
+            display: block;
+            transition: .3s;
+        }
+        .drop_down_trigger {
+            i {
+                transform: rotate(180deg);
+                transition: .3s;
+            }
+        }
+    }
+}
+
+
+.postImage{
+    cursor: pointer;
 }

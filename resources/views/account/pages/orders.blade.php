@@ -1,4 +1,5 @@
 @extends('layouts.account')
+@section('title', ' My orders')
 @section('pages')
     <div id="orders">
         <div class="myaccount-content">

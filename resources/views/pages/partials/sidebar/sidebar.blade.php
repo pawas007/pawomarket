@@ -84,7 +84,7 @@
                     @foreach($instagramLastPost  as $instagramItem)
                     <li class="img-zoom-hover">
                         <a class="image-link" href="{{$instagramItem['link']}}" target="_blank">
-                            <img src="/assets/img/instagram/{{$instagramItem['img']}}" alt="instagram"></a>
+                            <img src="{{$instagramItem['img']}}" alt="instagram"></a>
                     </li>
                     @endforeach
                 </ul>

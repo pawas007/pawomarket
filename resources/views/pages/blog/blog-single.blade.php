@@ -51,8 +51,9 @@
                         @include('pages.partials.comments',['comments' => $singlePost->comments, 'type'=>'post','id'=>$singlePost->id])
                     </div>
                 </div>
-                @include('pages.partials.sidebar.sidebar')
+
             </div>
+            @include('pages.partials.sidebar.sidebar')
         </div>
     </section>
 @endsection

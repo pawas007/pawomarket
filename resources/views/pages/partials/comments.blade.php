@@ -83,11 +83,11 @@
                                         >{{ old('message')}}</textarea>
         </div>
         <div class="form-group col-md-12">
-            <button value="Submit" name="submit"
+            <button
                     class="theme-btn-one btn_md btn-black-overlay"
-                    title="Submit Your Message!" type="submit">Submit
+                    type="submit">Submit
             </button>
         </div>
-</div>
+
 </form>
 </div>

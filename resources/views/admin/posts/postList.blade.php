@@ -1,4 +1,5 @@
 @extends('layouts.account')
+@section('title', 'User posts')
 @section('pages')
 @include('pages.partials.messages')
     <table class="table table-hover">

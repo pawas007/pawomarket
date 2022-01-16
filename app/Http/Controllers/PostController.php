@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
-use App\Http\Services\InstagramProvider;
+use Illuminate\Support\Facades\DB;
+use App\Models\CategoryPost;
 use App\Models\Comment;
 use App\Models\Post;
-
-use Illuminate\Support\Facades\Cache;
+use App\Models\Tag;
 use Illuminate\Http\Request;
-
 
 
 class PostController extends Controller
@@ -21,9 +20,6 @@ class PostController extends Controller
      */
     public function index()
     {
-
-
-
         $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('pages.blog.blog', compact('posts'));
     }
@@ -41,7 +37,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = CategoryPost::all();
+        $tags = Tag::all();
+        return view('admin.posts.create-post', compact('categories', 'tags'));
     }
 
     /**
@@ -52,7 +50,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $post = new Post();
+            $post->fill($request->all());
+            $post->save();
+            $post->categories()->sync($request->categories);
+            $post->tags()->sync($request->tags);
+            DB::commit();
+            return redirect()->back()->withSuccess('Post created');
+        } catch (Throwable $e) {
+            DB::rollBack();
+            return redirect()->back()->withSuccess('Error');
+        }
+
     }
 
     /**
@@ -117,6 +128,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->tags()->detach();
+        $post->categories()->detach();
         $post->delete();
         //        Session::flash('message', "Product created");
         return redirect()->back()->withSuccess('Post deleted');

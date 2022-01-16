@@ -32,20 +32,20 @@ return [
     |             ]
     */
     'bots'                         => [
-        'pawomarket_bot' => [
-            'username'            => env('TELEGRAM_BOT_NAME'),
-            'token'               => env('TELEGRAM_BOT_TOKEN'),
-            'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
-            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
-            'commands'            => [
-                //Acme\Project\Commands\MyTelegramBot\BotCommand::class
-            ],
-        ],
+//        'test' => [
+//            'username'            => env('TELEGRAM_BOT_NAME'),
+//            'token'               => env('TELEGRAM_BOT_TOKEN'),
+//            'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
+//            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
+//            'commands'            => [
+//                //Acme\Project\Commands\MyTelegramBot\BotCommand::class
+//            ],
+//        ],
 
-        //        'mySecondBot' => [
-        //            'username'  => 'AnotherTelegram_Bot',
-        //            'token' => '123456:abc',
-        //        ],
+                'pawomarket_bot' => [
+                    'username'  => env('TELEGRAM_BOT_NAME'),
+                    'token' => env('TELEGRAM_BOT_TOKEN'),
+                ],
     ],
 
     /*
@@ -57,7 +57,7 @@ return [
     | your default bot for regular use.
     |
     */
-    'default'                      => 'mybot',
+    'default'                      => env('TELEGRAM_BOT_NAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -202,3 +202,5 @@ return [
         // 'status' => Acme\Project\Commands\StatusCommand::class,
     ],
 ];
+
+//https://tutsforweb.com/sending-notifications-to-telegram-messenger-with-laravel/

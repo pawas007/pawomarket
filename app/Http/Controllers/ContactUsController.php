@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
+use App\Jobs\TelegramNotifications\ContactFormSend;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use Telegram\Bot\Laravel\Facades\Telegram;
@@ -42,18 +43,12 @@ class ContactUsController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(ContactFormRequest $request)
     {
-//            $contactForm = new ContactUs();
-//            $contactForm ->fill($request->all());
-//            $contactForm ->save();
-
-        Telegram::sendMessage([
-            'chat_id' => env('TELEGRAM_CHANNEL_ID'),
-            'text' => 'asdasd'
-        ]);
-
-
+            $contactForm = new ContactUs();
+            $contactForm ->fill($request->all());
+            $contactForm ->save();
+            ContactFormSend::dispatch($request->all())->beforeCommit()->onQueue('telegram');
             return redirect()->back()->withSuccess('Settings saved');
     }
 

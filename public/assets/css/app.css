@@ -376,3 +376,50 @@ textarea.is-invalid {
   z-index: 10;
   transition: 0.4s;
 }
+
+.sidebar-admin {
+  margin-top: 30px;
+}
+
+.drop_down_box {
+  margin-bottom: 20px;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  padding: 7px;
+}
+.drop_down_box .drop_down_trigger {
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+.drop_down_box .drop_down_trigger i {
+  transition: 0.3s;
+}
+.drop_down_box .drop_down_container {
+  display: none;
+  border-top: 1px solid #ced4da;
+  width: 100%;
+  padding: 10px 0;
+}
+.drop_down_box .drop_down_container .list-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.drop_down_box .drop_down_container .list-container .form-check *:hover {
+  cursor: pointer;
+}
+.drop_down_box.drop_active .drop_down_container {
+  display: block;
+  transition: 0.3s;
+}
+.drop_down_box.drop_active .drop_down_trigger i {
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+
+.postImage {
+  cursor: pointer;
+}

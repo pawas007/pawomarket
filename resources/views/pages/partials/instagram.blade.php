@@ -17,7 +17,7 @@
                         <div class="instgram_post">
                             <a href="{{$instagramItem['link']}}" target="_blank">
                                 <i class="fab fa-instagram"></i>
-                                <img src="/assets/img/instagram/{{$instagramItem['img']}}" alt="instagram" />
+                                <img src="{{$instagramItem['img']}}" alt="instagram" />
                             </a>
                         </div>
                         @endforeach

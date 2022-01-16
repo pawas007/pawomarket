@@ -36,7 +36,7 @@ class InstagramProvider
             $imageName = $key . '.png';
             $img = public_path('/assets/img/instagram/') . $imageName;
             $new_img = file_put_contents($img, file_get_contents($path));
-            $instagramPosts[] = ['img' => $img , 'link' => $accountMedia['link']];
+            $instagramPosts[] = ['img' => '/assets/img/instagram/'. $imageName , 'link' => $accountMedia['link']];
 
         }
         return $instagramPosts;

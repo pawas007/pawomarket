@@ -1,4 +1,5 @@
 @extends('layouts.account')
+@section('title', 'Account')
 @section('pages')
 
 
