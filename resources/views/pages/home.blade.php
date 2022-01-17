@@ -1221,7 +1221,7 @@
                             <div class="blog_one_item img-zoom-hover">
                                 <div class="blog_one_img">
                                     <a href="{{ route('single.blog',['slug' => $post->slug]) }}">
-                                        <img src="{{$post->image}}" alt="{{$post->title}}">
+                                        <img src="{{Storage::url($post->image) }}" alt="{{$post->title}}">
                                     </a>
                                 </div>
                                 <div class="blog_text">

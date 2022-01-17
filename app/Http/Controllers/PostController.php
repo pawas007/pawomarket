@@ -9,8 +9,8 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class PostController extends Controller
@@ -141,7 +141,7 @@ class PostController extends Controller
         try {
             $post = Post::find($id);
             $post->tags()->detach();
-//            File::disk('public')->de
+            Storage::delete($post->image);
             $post->categories()->detach();
             $post->delete();
             DB::commit();
