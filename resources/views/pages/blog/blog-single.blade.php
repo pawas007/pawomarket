@@ -15,7 +15,7 @@
                     <div class="blog_single_content">
                         @if($singlePost->image)
                             <div class="blog_single_img img-zoom-hover">
-                                <img src="{{$singlePost->image}}" alt="{{$singlePost->title}}">
+                                <img src="{{Storage::url($singlePost->image) }}" alt="{{$singlePost->title}}">
                             </div>
                         @endif
                         <div class="blog_single_widget">
@@ -51,7 +51,6 @@
                         @include('pages.partials.comments',['comments' => $singlePost->comments, 'type'=>'post','id'=>$singlePost->id])
                     </div>
                 </div>
-
             </div>
             @include('pages.partials.sidebar.sidebar')
         </div>

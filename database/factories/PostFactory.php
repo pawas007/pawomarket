@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -46,7 +47,7 @@ class PostFactory extends Factory
         return [
             'title' => $title ,
             'slug' => Str::slug($title,'-'),
-            'image' => 'https://andit.co/projects/html/andshop/assets/img/blog/post1.png',
+            'image' => 'blog/posts/post.png',
             'content' => $content,
             'short_description' => $this->faker->text(300) ,
         ];

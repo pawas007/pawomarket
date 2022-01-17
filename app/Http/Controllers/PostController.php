@@ -9,6 +9,8 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 
 class PostController extends Controller
@@ -54,6 +56,15 @@ class PostController extends Controller
         try {
             $post = new Post();
             $post->fill($request->all());
+
+//download img
+            if ($request->has('post_image')) {
+                $image = $request->file('post_image');
+                $imgName = $image->getClientOriginalName();
+                $path = $image->storeAs('blog/posts', $imgName);
+                $post->image = $path;
+            }
+//download img
             $post->save();
             $post->categories()->sync($request->categories);
             $post->tags()->sync($request->tags);
@@ -126,11 +137,18 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->tags()->detach();
-        $post->categories()->detach();
-        $post->delete();
-        //        Session::flash('message', "Product created");
-        return redirect()->back()->withSuccess('Post deleted');
+        DB::beginTransaction();
+        try {
+            $post = Post::find($id);
+            $post->tags()->detach();
+//            File::disk('public')->de
+            $post->categories()->detach();
+            $post->delete();
+            DB::commit();
+            return redirect()->back()->withSuccess('Post deleted');
+        } catch (Throwable $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors('Error');
+        }
     }
 }

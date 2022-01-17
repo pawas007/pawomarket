@@ -43,8 +43,11 @@
                             @if($post->image)
                                 <div class="thumb-side img-zoom-hover">
                                     <a href="{{ route('single.blog',['slug' => $post->slug])}}">
-                                        <img src="{{ $post->image}}"
-                                             alt="{{ $post->title}}"></a>
+                                        <img src="{{Storage::url($post->image) }}  "
+                                             alt="{{ $post->title}}">
+
+
+                                    </a>
                                 </div>
                             @endif
                             <div class="media-side">

@@ -9,7 +9,7 @@
                             <h2>Create post</h2>
                         </div>
                         @include('pages.partials.messages')
-                        <form action="{{route('post.store')}}" method="POST">
+                        <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-8">
@@ -76,7 +76,7 @@
                                     </div>
 
                                     <div class="post_image mt-5">
-                                        <input type='file' id="postImage" style="display: none">
+                                        <input type='file' name="post_image" id="postImage" style="display: none">
                                         <label for="postImage" class="postImage">
                                             <img id="uploadedImage" src="/assets/img/blog/default.jpg" alt="Uploaded Image" accept="image/png, image/jpeg">
                                         </label>

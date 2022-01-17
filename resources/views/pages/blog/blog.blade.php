@@ -16,7 +16,7 @@
                                     <div class="col-lg-4 col-md-12 col-sm-12 col-12">
                                         <div class="blog_one_img">
                                             <a href="{{ route('single.blog',['slug' => $post->slug])}}">
-                                                <img src="{{$post->image}}" alt="{{$post->title}}">
+                                                <img src="{{Storage::url($post->image) }}" alt="{{$post->title}}">
                                             </a>
                                         </div>
                                     </div>
