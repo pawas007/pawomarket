@@ -29,7 +29,7 @@ class CategoryPostController extends Controller
     }
 
 
-    public function postCategory($slug){
+    public function postFilter($slug){
         $posts = Post::whereHas('categories', function($query) use ($slug) {
             $query->whereSlug($slug);
         })->orderBy('id', 'desc')->paginate(10);

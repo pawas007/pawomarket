@@ -18,8 +18,12 @@
     <div class="dashboard_tab_button">
         Admin panel
         <ul role="tablist" class="nav flex-column dashboard-list pt-2">
-            <li><a href="{{ route('blog.list') }} " class="@activeroute('blog.list')"><i class="fab fa-blogger-b"></i>Post list</a></li>
-            <li><a href="{{ route('post.create') }} " class="@activeroute('post.create')"><i class="far fa-sticky-note"></i>Post create</a></li>
+            <li><a href="{{ route('blog.list') }} " class="@activeroute('blog.list')"><i class="far fa-list-alt"></i>Post list</a></li>
+            <li><a href="{{ route('post.create') }} " class="@activeroute('post.create')"><i class="fas fa-newspaper"></i>Post create</a></li>
+
+            <li><a href="{{ route('tag') }} " class="@activeroute('post.create')"><i class="fas fa-tags"></i>Tags</a></li>
+
+
             <li><a href="{{ route('admin.instagram') }} " class="@activeroute('admin.instagram')"><i class="fab fa-instagram"></i>Instagram</a></li>
             <li><a href="{{ route('contacts.admin') }}"   class="@activeroute('contacts.admin')">   <i class="far fa-list-alt"></i>   Contact form</a></li>
 

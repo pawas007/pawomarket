@@ -27,15 +27,16 @@ Route::get('blog', [PostController::class, 'index'])->name('blog');
 Route::get('blog/single/{slug}', [PostController::class, 'show'])->name('single.blog');
 Route::post('blog/comment/create', [PostController::class, 'commentCreate'])->name('add.post.comment');
 //Blog end
+//Tags
+Route::get('blog/tag/{slug}', [TagController::class, 'tagFilter'])->name('post.tag');
 //Tags end
-Route::get('blog/tag/{slug}', [TagController::class, 'postTag'])->name('post.tag');
-Route::get('blog/category/{slug}', [CategoryPostController::class, 'postCategory'])->name('post.category');
-//Tags end
-//Contact US
+//Category
+Route::get('blog/category/{slug}', [CategoryPostController::class, 'postFilter'])->name('post.category');
+//Category end
+//Contact us
 Route::get('contact-us', [ContactUsController::class, 'index'])->name('contacts');
 Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create.contacts');
-
-//Contact US end
+//Contact us end
 Route::get('about-us', function () {
     return view('pages.about-us');
 })->name('about');
@@ -70,9 +71,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('blog/post/edit', [PostController::class, 'create'])->name('post.edit');
     Route::post('blog/post/store', [PostController::class, 'store'])->name('post.store');
     //blog end
+    Route::resource('tag', TagController::class,[   'names' => [
+        'index' => 'tag',
+        'store' => 'tag.store',
+        'destroy' => 'tag.destroy'
 
-
-
+    ]  ]);
+//tag end
     Route::get('instagram', [InstagramController::class, 'index'])->name('admin.instagram');
     Route::get('get-instagram', [InstagramController::class, 'getInstaPosts'])->name('get.instagram');
     Route::post('set-instagram', [InstagramController::class, 'setInstaSettings'])->name('set.instagram.settings');
