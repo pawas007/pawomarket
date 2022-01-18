@@ -9,6 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $appends = ['date'];
+
     protected $fillable = [
         'commentable_id',
         'commentable_type',
@@ -17,15 +19,11 @@ class Comment extends Model
         'message',
     ];
 
-
-
     public function commentable()
     {
         return $this->morphTo();
     }
 
-
-    protected $appends = ['date'];
     public function getdateAttribute(): string
     {
         $time =  date('d M, Y h:i A', strtotime($this->created_at));

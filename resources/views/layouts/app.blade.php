@@ -10,13 +10,17 @@
     @include('layouts.partials.favicon')
     <script src="{{ asset('assets/js/theme/jquery-3.6.0.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/theme/jquery-ui.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/owl.carousel.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/menu.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/count.js') }}" defer></script>
-
-    <script src="{{ asset('assets/js/theme/wow.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/theme/range-slider.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/custom.js') }}" defer></script>
     <script src="{{ asset('assets/js/app.js') }}" defer></script>
+
+
+
+
     @stack('scripts')
 
 <!-- Styles -->
@@ -28,6 +32,7 @@
     <link href="{{ asset('assets/css/theme/color.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/theme/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+
 
 
 </head>

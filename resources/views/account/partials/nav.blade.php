@@ -18,10 +18,22 @@
     <div class="dashboard_tab_button">
         Admin panel
         <ul role="tablist" class="nav flex-column dashboard-list pt-2">
-            <li><a href="{{ route('blog.list') }} " class="@activeroute('blog.list')"><i class="far fa-list-alt"></i>Post list</a></li>
-            <li><a href="{{ route('post.create') }} " class="@activeroute('post.create')"><i class="fas fa-newspaper"></i>Post create</a></li>
+            <li class="has-dropdown-custom">
+                <a href="#" class="custom-dropdown-trigger">
+                Blog
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="sub-menu-custom">
+                    <li><a href="{{ route('blog.list') }} " class="@activeroute('blog.list')"><i class="far fa-list-alt"></i>Post list</a></li>
+                    <li><a href="{{ route('post.create') }} " class="@activeroute('post.create')"><i class="fas fa-newspaper"></i>Post create</a></li>
+                    <li><a href="{{ route('tag') }} " class="@activeroute('tag')"><i class="fas fa-tags"></i>Tags</a></li>
+                    <li><a href="{{ route('categoryPost') }} " class="@activeroute('categoryPost')"><i class="fas fa-list-ul"></i>Post Categories</a></li>
+                </ul>
+            </li>
 
-            <li><a href="{{ route('tag') }} " class="@activeroute('post.create')"><i class="fas fa-tags"></i>Tags</a></li>
+
+
+
 
 
             <li><a href="{{ route('admin.instagram') }} " class="@activeroute('admin.instagram')"><i class="fab fa-instagram"></i>Instagram</a></li>

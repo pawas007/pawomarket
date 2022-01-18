@@ -20,15 +20,12 @@ class InstagramProvider
 
     public function getPosts(): array
     {
-
-
         $instagram = \InstagramScraper\Instagram::withCredentials(new \GuzzleHttp\Client(), $this->name, $this->password, new Psr16Adapter('Files'));
         $instagram->login();
         $instagram->saveSession();
         $account = $instagram->getAccount($this->account);
         $accountMedias = $account->getMedias();
         $instagramPosts = [];
-
 
         foreach ($accountMedias as $key => $accountMedia) {
             $images[$key] = str_replace("&amp;", "&", $accountMedia->getimageHighResolutionUrl());
@@ -40,9 +37,5 @@ class InstagramProvider
 
         }
         return $instagramPosts;
-
-
-
-
     }
 }

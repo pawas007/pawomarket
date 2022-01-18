@@ -71,12 +71,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('blog/post/edit', [PostController::class, 'create'])->name('post.edit');
     Route::post('blog/post/store', [PostController::class, 'store'])->name('post.store');
     //blog end
-    Route::resource('tag', TagController::class,[   'names' => [
+    Route::resource('tag', TagController::class, ['names' => [
         'index' => 'tag',
         'store' => 'tag.store',
         'destroy' => 'tag.destroy'
 
-    ]  ]);
+    ]]);
+
+    Route::resource('categoryPost', CategoryPostController::class, ['names' => [
+        'index' => 'categoryPost',
+        'store' => 'categoryPost.store',
+        'destroy' => 'categoryPost.destroy'
+
+    ]]);
+
+
 //tag end
     Route::get('instagram', [InstagramController::class, 'index'])->name('admin.instagram');
     Route::get('get-instagram', [InstagramController::class, 'getInstaPosts'])->name('get.instagram');

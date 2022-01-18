@@ -17,7 +17,7 @@ class CreateCategoryPostsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->integer('parent_id');
+            $table->integer('parent_id')->nullable();
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\PostCreateRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\CategoryPost;
 use App\Models\Comment;
@@ -10,8 +11,6 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
-
 
 class PostController extends Controller
 {
@@ -50,21 +49,21 @@ class PostController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
         DB::beginTransaction();
         try {
             $post = new Post();
             $post->fill($request->all());
 
-//download img
-            if ($request->has('post_image')) {
-                $image = $request->file('post_image');
+            //download img
+            if ($request->has('image')) {
+                $image = $request->file('image');
                 $imgName = $image->getClientOriginalName();
                 $path = $image->storeAs('blog/posts', $imgName);
                 $post->image = $path;
             }
-//download img
+            //download img
             $post->save();
             $post->categories()->sync($request->categories);
             $post->tags()->sync($request->tags);

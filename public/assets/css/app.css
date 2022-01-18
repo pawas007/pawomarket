@@ -422,4 +422,43 @@ textarea.is-invalid {
 
 .postImage {
   cursor: pointer;
+  border-radius: 0.25rem;
+}
+.postImage.is-invalid {
+  border: 1px solid #dc3545;
+}
+
+.has-dropdown-custom .sub-menu-custom {
+  display: none;
+  margin-bottom: 15px;
+}
+.has-dropdown-custom .custom-dropdown-trigger i {
+  transition: 0.3s;
+}
+.has-dropdown-custom.active .sub-menu-custom {
+  display: block;
+}
+.has-dropdown-custom.active .custom-dropdown-trigger i {
+  transform: rotate(180deg) translate(0, 3px);
+  transition: 0.3s;
+}
+
+.errors-category,
+.susses-category {
+  display: none;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #6d6d6d;
 }

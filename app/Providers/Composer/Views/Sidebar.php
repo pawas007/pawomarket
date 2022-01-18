@@ -26,9 +26,10 @@ class Sidebar extends ServiceProvider
      */
     public function boot()
     {
-        $tags = Tag::all();
+        $tags = Tag::has('posts')->get();
         $lastPost = Post::orderBy('id', 'desc')->take(3)->get();
-        $categories = CategoryPost::with('posts')->get();
+        $categories = CategoryPost::has('posts')->get();
+
         View::composer([
             'pages.partials.sidebar.sidebar',
         ], function ($view) use ($tags,$lastPost,$categories) {

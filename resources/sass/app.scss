@@ -91,11 +91,13 @@ textarea.is-invalid {
 .sidebar-admin {
     margin-top: 30px;
 }
+
 .drop_down_box {
     margin-bottom: 20px;
     border-radius: 0.25rem;
     border: 1px solid #ced4da;
     padding: 7px;
+
     .drop_down_trigger {
         font-weight: 600;
         font-size: 20px;
@@ -103,21 +105,25 @@ textarea.is-invalid {
         align-items: center;
         justify-content: space-between;
         padding-bottom: 5px;
+
         i {
             transition: .3s;
         }
     }
+
     .drop_down_container {
         display: none;
         border-top: 1px solid #ced4da;
         width: 100%;
         padding: 10px 0;
-        .list-container{
+
+        .list-container {
             max-height: 300px;
             overflow-y: scroll;
-            .form-check{
-                *{
-                    &:hover{
+
+            .form-check {
+                * {
+                    &:hover {
                         cursor: pointer;
                     }
                 }
@@ -131,6 +137,7 @@ textarea.is-invalid {
             display: block;
             transition: .3s;
         }
+
         .drop_down_trigger {
             i {
                 transform: rotate(180deg);
@@ -140,7 +147,63 @@ textarea.is-invalid {
     }
 }
 
-
-.postImage{
+.postImage {
     cursor: pointer;
+    border-radius: 0.25rem;
+
+    &.is-invalid {
+        border: 1px solid #dc3545;
+    }
+
+}
+
+.has-dropdown-custom {
+    .sub-menu-custom {
+        display: none;
+        margin-bottom: 15px;
+    }
+
+    .custom-dropdown-trigger {
+        i {
+
+            transition: .3s;
+        }
+    }
+
+
+    &.active {
+        .sub-menu-custom {
+            display: block;
+        }
+
+        .custom-dropdown-trigger {
+            i {
+                transform: rotate(180deg) translate(0, 3px);
+                transition: .3s;
+            }
+        }
+    }
+}
+
+.errors-category,
+.susses-category {
+    display: none;
+}
+
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: #6d6d6d;
 }

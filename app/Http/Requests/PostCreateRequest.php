@@ -6,8 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PostCreateRequest extends FormRequest
 {
-
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -16,7 +14,10 @@ class PostCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|unique:posts',
+            'content' => 'required',
+            'short_description' => 'required',
+            'image' => 'required',
         ];
     }
 }

@@ -19,11 +19,8 @@ class InstagramController extends Controller
     public function index()
     {
         $accountData = Instagram::findOrFail(1);
-
-
         return view('admin.instagram.instagram',compact('accountData'));
     }
-
 
     public function setInstaSettings(Request $request)
     {
