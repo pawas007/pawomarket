@@ -51,10 +51,5 @@
             </li>
         </ul>
     </li>
-    @guest
-        <li><a href="{{ route('login') }}">Log in</a></li>
-    @endguest
-    @auth
-        <li><a href="{{ route('dashboard') }}">My account </a></li>
-    @endauth
+
 </ul>

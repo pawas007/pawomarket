@@ -39,6 +39,14 @@
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--black action-hover-color--golden">
+                            @guest
+                                <li><a href="{{ route('login') }}"><i class="fas fa-user"></i></a></li>
+                            @endguest
+                            @auth
+                                <li><a href="{{ route('dashboard') }}"><i class="fas fa-user"></i></a></li>
+                            @endauth
+
+
                             <li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                     <i class="far fa-heart"></i>
