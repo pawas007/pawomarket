@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
@@ -14,8 +15,12 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->wantsJson()) {
+            $tags = Tag::all();
+            return response()->json($tags );
+        }
         $tags = Tag::paginate(10);
         return view('admin.tag.tag',compact('tags'));
 
@@ -40,13 +45,28 @@ class TagController extends Controller
     public function store(Request $request)
     {
         try {
+            // API store
+            $validator = Validator::make($request->json()->all(), [
+                'name' => 'required|unique:tags',
+            ]);
+            if ($request->wantsJson()) {
+                if ($validator->fails()) {
+                    return response()->json(['errors'=>$validator->errors(), 'status' => false],);
+                }
+            }
+            //API store
             $this->validate($request, [
                 'name' => 'required|unique:tags',
             ]);
             $tag = new Tag();
             $tag->name = $request->name;
             $tag->save();
-            return redirect()->back()->withSuccess('Tag created');
+
+            if ($request->wantsJson()) {
+                return response()->json(['message' => 'Tag created']);
+            } else {
+                return redirect()->back()->withSuccess('Tag created');
+            }
         } catch (Throwable $e) {
             return redirect()->back()->withSuccess('Error');
         }

@@ -4,14 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
-require('./blogPostAxios')
-
+require('./axios/createTagCategory')
 
 $('.drop_down_trigger').on('click', function (e) {
     e.preventDefault()
     $(this).parent().toggleClass('drop_active');
 })
+
 $('.custom-dropdown-trigger').on('click', function (e) {
     e.preventDefault()
     $(this).parent().toggleClass('active')
@@ -19,8 +18,8 @@ $('.custom-dropdown-trigger').on('click', function (e) {
 })
 
 let subHasActive = $('.sub-menu-custom a').hasClass('active');
-subHasActive && $('.custom-dropdown-trigger,.has-dropdown-custom').addClass('active')
-
+subHasActive &&$('.sub-menu-custom a.active').parent().parent().prev().addClass('active');
+subHasActive &&$('.sub-menu-custom a.active').parent().parent().parent().addClass('active');
 
 $('#postImage').on('change', function () {
         if (this.files[0]) {
