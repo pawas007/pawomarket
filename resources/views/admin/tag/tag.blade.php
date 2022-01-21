@@ -42,8 +42,7 @@
                                 @csrf
                                 <button type="submit" class="theme-btn-one bg-black ">Delete</button>
                             </form>
-                            <form action="{{route('tag.destroy',$tag->id)}}" method="post">
-                                @method('delete')
+                            <form action="{{route('tag.edit',$tag)}}" method="get">
                                 @csrf
                                 <button type="submit" class="theme-btn-one bg-black ">Edit</button>
                             </form>

@@ -18,9 +18,8 @@
     </li>
     <li class="has-dropdown">
         <a href="#"
-           class=" main-menu-link  @activeroute('about') @activeroute('contacts') @activeroute('faq') @activeroute('privacy-policy')">
-            About Us
-
+           class=" main-menu-link  @activeroute('about')  @activeroute('faq') @activeroute('privacy-policy')">
+            About
             <i class="fa fa-angle-down"></i>
         </a>
 
@@ -28,15 +27,10 @@
             <li>
                 <a href="{{route('about')}}"
                    class=" main-menu-link @activeroute('about')">
-                    About us
+                    About Us
                 </a>
             </li>
-            <li>
-                <a href="{{route('contacts')}}"
-                   class=" main-menu-link @activeroute('contacts')">
-                    Contact us
-                </a>
-            </li>
+
             <li>
                 <a href="{{route('faq')}}"
                    class=" main-menu-link @activeroute('faq')">
@@ -50,6 +44,13 @@
                 </a>
             </li>
         </ul>
+    </li>
+
+    <li>
+        <a href="{{route('contacts')}}"
+           class=" main-menu-link @activeroute('contacts')">
+            Contact us
+        </a>
     </li>
 
 </ul>

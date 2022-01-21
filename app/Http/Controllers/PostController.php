@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\PostCreateRequest;
+use App\Http\Requests\PostUpdateRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\CategoryPost;
 use App\Models\Comment;
@@ -30,6 +31,24 @@ class PostController extends Controller
         $posts = Post::with('categories')->orderBy('id', 'desc')->paginate(10);
         return view('admin.posts.postList', compact('posts'));
     }
+
+
+    public function search(Request $request)
+    {
+        $searchableTitle = $request->search;
+        $posts = Post::where('title', 'LIKE', "%$searchableTitle%")->orderBy('id', 'desc')->paginate(10);
+        return view('pages.blog.blog', compact('posts', 'searchableTitle'));
+    }
+
+
+    public function searchPostAdmin(Request $request)
+    {
+        $searchableTitle = $request->search;
+        $posts = Post::where('title', 'LIKE', "%$searchableTitle%")->orderBy('id', 'desc')->paginate(10);
+        return view('admin.posts.postList', compact('posts'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -59,9 +78,10 @@ class PostController extends Controller
             //download img
             if ($request->has('image')) {
                 $image = $request->file('image');
-                $imgName = $image->getClientOriginalName();
+                $imgName = time().$image->getClientOriginalName();
                 $path = $image->storeAs('blog/posts', $imgName);
                 $post->image = $path;
+
             }
             //download img
             $post->save();
@@ -101,7 +121,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        dd('edit');
+        $categories = CategoryPost::all();
+        $tags = Tag::all();
+        $post = Post::where('id',$post->id)->with('tags', 'comments', 'categories')->with('comments')->first();
+        return view('admin.posts.edit-post', compact('post','categories','tags'));
+
+
+
     }
 
 
@@ -123,9 +149,41 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostUpdateRequest $request, $id)
     {
-        //
+
+//        image
+        DB::beginTransaction();
+        try {
+
+            $post = Post::find($id);
+            $post->title = $request->title;
+            $post->content = $request->contents;
+            $post->short_description = $request->short_description;
+            $post->categories()->sync($request->categories);
+            $post->tags()->sync($request->tags);
+
+            //download img
+            if ($request->has('image')) {
+                Storage::delete($post->image);
+                $image = $request->file('image');
+                $imgName = time().$image->getClientOriginalName();
+                $path = $image->storeAs('blog/posts', $imgName);
+                $post->image = $path;
+
+            }
+
+            $post->save();
+            DB::commit();
+            return redirect()->back()->withSuccess('Post updated');
+
+        }catch (Throwable $e) {
+        DB::rollBack();
+        return redirect()->back()->withSuccess('Error');
+    }
+
+
+
     }
 
     /**

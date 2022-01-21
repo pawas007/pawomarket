@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->mediumText('message');
+            $table->integer('rating')->nullable();
             $table->timestamps();
         });
     }

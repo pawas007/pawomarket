@@ -18,6 +18,9 @@ This files table contents are outlined below>>>>>
 Default CSS
 =================================================*/
 
+
+
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap");
 html,
 body {
@@ -6733,4 +6736,470 @@ padding-top: 30px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     z-index: 99;
+}
+.cssload-container * {
+    box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.cssload-container {
+    margin: 17px auto 0 auto;
+    max-width: 475px;
+}
+
+.cssload-container ul li {
+    list-style: none;
+}
+
+.cssload-flex-container {
+    display: flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: -moz-flex;
+    flex-direction: row;
+    -o-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cssload-flex-container li {
+    padding: 8px;
+    height: 85px;
+    width: 85px;
+    margin: 25px 17px;
+    position: relative;
+    text-align: center;
+}
+
+.cssload-loading-center {
+    display: inline-block;
+    position: absolute;
+    background: rgba(247, 152, 55, 0.83);
+    height: 25px;
+    width: 25px;
+    left: 31px;
+    top: 31px;
+    transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    animation: pulse 2.2s ease infinite;
+    -o-animation: pulse 2.2s ease infinite;
+    -ms-animation: pulse 2.2s ease infinite;
+    -webkit-animation: pulse 2.2s ease infinite;
+    -moz-animation: pulse 2.2s ease infinite;
+}
+
+.cssload-loading {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-top: 3px;
+    transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+}
+
+.cssload-loading:after, .cssload-loading:before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    display: block;
+    top: 0;
+    background: rgba(247, 152, 55, 0.78);
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    animation-delay: -0.11s;
+    -o-animation-delay: -0.11s;
+    -ms-animation-delay: -0.11s;
+    -webkit-animation-delay: -0.11s;
+    -moz-animation-delay: -0.11s;
+}
+
+.cssload-loading:after {
+    right: 0;
+    animation: square-tr 4.4s ease infinite;
+    -o-animation: square-tr 4.4s ease infinite;
+    -ms-animation: square-tr 4.4s ease infinite;
+    -webkit-animation: square-tr 4.4s ease infinite;
+    -moz-animation: square-tr 4.4s ease infinite;
+    animation-delay: 0.275s;
+    -o-animation-delay: 0.275s;
+    -ms-animation-delay: 0.275s;
+    -webkit-animation-delay: 0.275s;
+    -moz-animation-delay: 0.275s;
+}
+
+.cssload-loading:before {
+    animation: square-tl 4.4s ease infinite;
+    -o-animation: square-tl 4.4s ease infinite;
+    -ms-animation: square-tl 4.4s ease infinite;
+    -webkit-animation: square-tl 4.4s ease infinite;
+    -moz-animation: square-tl 4.4s ease infinite;
+    animation-delay: 0.275s;
+    -o-animation-delay: 0.275s;
+    -ms-animation-delay: 0.275s;
+    -webkit-animation-delay: 0.275s;
+    -moz-animation-delay: 0.275s;
+}
+
+.cssload-loading.cssload-two {
+    position: relative;
+    top: -68px;
+}
+
+.cssload-loading.cssload-two:after, .cssload-loading.cssload-two:before {
+    bottom: 0;
+    top: initial;
+}
+
+.cssload-loading.cssload-two:after {
+    animation: square-br 4.4s ease infinite;
+    -o-animation: square-br 4.4s ease infinite;
+    -ms-animation: square-br 4.4s ease infinite;
+    -webkit-animation: square-br 4.4s ease infinite;
+    -moz-animation: square-br 4.4s ease infinite;
+    animation-direction: reverse;
+    -o-animation-direction: reverse;
+    -ms-animation-direction: reverse;
+    -webkit-animation-direction: reverse;
+    -moz-animation-direction: reverse;
+}
+
+.cssload-loading.cssload-two:before {
+    animation: square-bl 4.4s ease infinite;
+    -o-animation: square-bl 4.4s ease infinite;
+    -ms-animation: square-bl 4.4s ease infinite;
+    -webkit-animation: square-bl 4.4s ease infinite;
+    -moz-animation: square-bl 4.4s ease infinite;
+    animation-direction: reverse;
+    -o-animation-direction: reverse;
+    -ms-animation-direction: reverse;
+    -webkit-animation-direction: reverse;
+    -moz-animation-direction: reverse;
+}
+
+@keyframes square-tl {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(0, 53.5px);
+    }
+    50% {
+        transform: translate(53.5px, 53.5px);
+    }
+    75% {
+        transform: translate(53.5px, 0);
+    }
+}
+@-webkit-keyframes square-tl {
+    0% {
+        -webkit-transform: translate(0, 0);
+    }
+    25% {
+        -webkit-transform: translate(0, 53.5px);
+    }
+    50% {
+        -webkit-transform: translate(53.5px, 53.5px);
+    }
+    75% {
+        -webkit-transform: translate(53.5px, 0);
+    }
+}
+@keyframes square-bl {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(0, -53.5px);
+    }
+    50% {
+        transform: translate(53.5px, -53.5px);
+    }
+    75% {
+        transform: translate(53.5px, 0);
+    }
+}
+@-webkit-keyframes square-bl {
+    0% {
+        -webkit-transform: translate(0, 0);
+    }
+    25% {
+        -webkit-transform: translate(0, -53.5px);
+    }
+    50% {
+        -webkit-transform: translate(53.5px, -53.5px);
+    }
+    75% {
+        -webkit-transform: translate(53.5px, 0);
+    }
+}
+@keyframes square-tr {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-53.5px, 0);
+    }
+    50% {
+        transform: translate(-53.5px, 53.5px);
+    }
+    75% {
+        transform: translate(0, 53.5px);
+    }
+}
+@-webkit-keyframes square-tr {
+    0% {
+        -webkit-transform: translate(0, 0);
+    }
+    25% {
+        -webkit-transform: translate(-53.5px, 0);
+    }
+    50% {
+        -webkit-transform: translate(-53.5px, 53.5px);
+    }
+    75% {
+        -webkit-transform: translate(0, 53.5px);
+    }
+}
+@keyframes square-br {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-53.5px, 0);
+    }
+    50% {
+        transform: translate(-53.5px, -53.5px);
+    }
+    75% {
+        transform: translate(0, -53.5px);
+    }
+}
+@-webkit-keyframes square-br {
+    0% {
+        -webkit-transform: translate(0, 0);
+    }
+    25% {
+        -webkit-transform: translate(-53.5px, 0);
+    }
+    50% {
+        -webkit-transform: translate(-53.5px, -53.5px);
+    }
+    75% {
+        -webkit-transform: translate(0, -53.5px);
+    }
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(inherit) rotate(45deg);
+    }
+    75% {
+        transform: scale(0.25) rotate(45deg);
+    }
+}
+@-webkit-keyframes pulse {
+    0%, 100% {
+        -webkit-transform: scale(inherit) rotate(45deg);
+    }
+    75% {
+        -webkit-transform: scale(0.25) rotate(45deg);
+    }
+}
+.user_account a {
+    color: #ffffff;
+}
+.user_account a img {
+    display: block;
+    width: 70px;
+    margin: 5px auto;
+    border-radius: 50%;
+}
+
+.logout_dash {
+    border: 1px solid #E8E8E8;
+    border-top: none;
+    color: #212121;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    padding: 18px 15px;
+    text-transform: uppercase;
+    text-align: left;
+    background: none;
+    width: 100%;
+}
+.logout_dash:hover {
+    background: #f79837;
+    color: white;
+    transition: all 0.3s ease-in-out 0.1s;
+}
+.logout_dash i {
+    font-size: 14px;
+    text-align: center;
+    width: 25px;
+}
+
+.logo_head {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    color: #f79837;
+    font-size: xx-large;
+}
+
+textarea.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.owl-carousel .owl-item img {
+    height: 370px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.message-action {
+    position: relative;
+    cursor: pointer;
+}
+.message-action:hover .content {
+    display: block;
+}
+.message-action .content {
+    position: absolute;
+    box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    width: 345px;
+    left: -267px;
+    bottom: -85px;
+    background: white;
+    position: absolute;
+    padding: 11px;
+    display: none;
+    z-index: 10;
+    transition: 0.4s;
+}
+
+.sidebar-admin {
+    margin-top: 30px;
+}
+
+.drop_down_box {
+    margin-bottom: 20px;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 7px;
+}
+.drop_down_box .drop_down_trigger {
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+.drop_down_box .drop_down_trigger i {
+    transition: 0.3s;
+}
+.drop_down_box .drop_down_container {
+    display: none;
+    border-top: 1px solid #ced4da;
+    width: 100%;
+    padding: 10px 0;
+}
+.drop_down_box .drop_down_container .list-container {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.drop_down_box .drop_down_container .list-container .form-check *:hover {
+    cursor: pointer;
+}
+.drop_down_box.drop_active .drop_down_container {
+    display: block;
+    transition: 0.3s;
+}
+.drop_down_box.drop_active .drop_down_trigger i {
+    transform: rotate(180deg);
+    transition: 0.3s;
+}
+
+.postImage {
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+.postImage.is-invalid {
+    border: 1px solid #dc3545;
+}
+
+.has-dropdown-custom .sub-menu-custom {
+    display: none;
+    margin-bottom: 15px;
+}
+.has-dropdown-custom .custom-dropdown-trigger i {
+    transition: 0.3s;
+}
+.has-dropdown-custom.active .sub-menu-custom {
+    display: block;
+}
+.has-dropdown-custom.active .custom-dropdown-trigger i {
+    transform: rotate(180deg) translate(0, 3px);
+    transition: 0.3s;
+}
+
+.errors-tag,
+.susses-tag,
+.errors-category,
+.susses-category {
+    display: none;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #6d6d6d;
 }

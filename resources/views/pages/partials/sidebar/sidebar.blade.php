@@ -4,10 +4,11 @@
         <div class="sidebar-widget">
             <h3 class="sidebar-title mt-0">Search</h3>
             <div class="search-widget">
-                <form action="#">
+                <form action="{{route('search.blog')}}" method="POST">
+                    @csrf
                     <div class="input-group">
-                        <input class="form-control" placeholder="Search entire store here ..."
-                               type="text">
+                        <input class="form-control" placeholder="Search..."
+                               type="text" name="search">
                         <button type="submit">
                             <i class="fas fa-search"></i>
                         </button>
@@ -23,21 +24,31 @@
                 <ul>
                     @foreach($categories as $category)
                         <li>
-                            <a href="{{ route('post.category',['slug' => $category->slug])}}" class="">{{$category->name}} <span>(   {{count($category->posts)}})</span> </a>
+                            <a href="{{ route('post.category',['slug' => $category->slug])}}" class="@activefiltercat($category->slug)">{{$category->name}} <span>(   {{count($category->posts)}})</span> </a>
                         </li>
                     @endforeach
                 </ul>
             </div>
         </div>
         <!-- Sidebar single item -->
+        @if($tags)
+            <div class="sidebar-widget mt-40px">
+                <h3 class="sidebar-title">Tags</h3>
+                <div class="sidebar-widget-tag d-inline-block">
+                    <ul>
+                        @foreach($tags as $tag)
+                            <li><a href="{{route('post.tag',$tag->slug)}}" class="@activefiltertag($tag->slug)"> {{$tag->name}}  </a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+    @endif
+    <!-- Sidebar single item -->
 
         @if($lastPost)
-
             <div class="sidebar-widget mt-40px">
                 <h3 class="sidebar-title">Recent Post</h3>
                 <div class="recent-post-widget">
-
-
                     @foreach($lastPost as $post)
                         <div class="recent-single-post d-flex">
                             @if($post->image)
@@ -45,8 +56,6 @@
                                     <a href="{{ route('single.blog',['slug' => $post->slug])}}">
                                         <img src="{{Storage::url($post->image) }}  "
                                              alt="{{ $post->title}}">
-
-
                                     </a>
                                 </div>
                             @endif
@@ -63,19 +72,11 @@
             <!-- Sidebar single item -->
 
         @endif
-        @if($tags)
-            <div class="sidebar-widget mt-40px">
-                <h3 class="sidebar-title">Tags</h3>
-                <div class="sidebar-widget-tag d-inline-block">
-                    <ul>
-                        @foreach($tags as $tag)
-                            <li><a href="{{route('post.tag',$tag->slug)}}"> {{$tag->name}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-    @endif
-    <!-- Sidebar single item -->
+
+
+
+
+
 
 
     @if($instagramLastPost )

@@ -6,6 +6,7 @@ use App\Models\CategoryPost;
 use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryPostController extends Controller
 {
@@ -97,7 +98,7 @@ class CategoryPostController extends Controller
      */
     public function edit(CategoryPost $categoryPost)
     {
-        //
+        return view('admin.category-post.category-edit',compact('categoryPost'));
     }
 
     /**
@@ -109,7 +110,17 @@ class CategoryPostController extends Controller
      */
     public function update(Request $request, CategoryPost $categoryPost)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required|unique:category_posts',
+        ]);
+
+        $categoryPost->name = $request->name;
+        $categoryPost->slug = Str::slug($request->name,'-');
+        $categoryPost->save();
+
+        return  redirect()->route('categoryPost')->withSuccess('Tag updated');
+
     }
 
     /**

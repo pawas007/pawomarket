@@ -7,13 +7,10 @@
                     <ul>
                         <li><a href="{{route('home')}}">Home</a></li>
                         <li><i class="fas fa-slash"></i></li>
-
                         @isset($parent)
                             <li><a href="{{route('blog')}}">Blog</a></li>
                             <li><i class="fas fa-slash"></i></li>
                             @endisset
-
-
                         <li class="active">{{$currentPage}}</li>
                     </ul>
                 </div>

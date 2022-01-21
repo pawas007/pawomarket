@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryPostController;
 use App\Http\Controllers\InstagramController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 //Blog
 Route::get('blog', [PostController::class, 'index'])->name('blog');
 Route::get('blog/single/{slug}', [PostController::class, 'show'])->name('single.blog');
+Route::post('blog/search', [PostController::class, 'search'])->name('search.blog');
+
+
 Route::post('blog/comment/create', [PostController::class, 'commentCreate'])->name('add.post.comment');
 //Blog end
 //Tags
@@ -68,20 +72,29 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('blog-list', [PostController::class, 'blogList'])->name('blog.list');
     Route::get('blog/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
     Route::get('blog/post/create', [PostController::class, 'create'])->name('post.create');
-    Route::get('blog/post/edit', [PostController::class, 'create'])->name('post.edit');
+    Route::get('blog/post/edit/{post}', [PostController::class, 'edit'])->name('post.edit');
     Route::post('blog/post/store', [PostController::class, 'store'])->name('post.store');
+    Route::get('blog/post/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    Route::post('blog/post/search', [PostController::class, 'searchPostAdmin'])->name('post.admin.search');
+    Route::patch('blog/post/update/{id}', [PostController::class, 'update'])->name('post.admin.update');
+
     //blog end
     Route::resource('tag', TagController::class, ['names' => [
         'index' => 'tag',
         'store' => 'tag.store',
-        'destroy' => 'tag.destroy'
+        'edit' => 'tag.edit',
+        'destroy' => 'tag.destroy',
+        'update' => 'tag.update'
+
 
     ]]);
 
     Route::resource('categoryPost', CategoryPostController::class, ['names' => [
         'index' => 'categoryPost',
         'store' => 'categoryPost.store',
-        'destroy' => 'categoryPost.destroy'
+        'edit' => 'categoryPost.edit',
+        'destroy' => 'categoryPost.destroy',
+        'update' => 'categoryPost.update'
 
     ]]);
 

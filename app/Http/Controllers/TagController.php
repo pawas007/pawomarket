@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -86,6 +87,8 @@ class TagController extends Controller
         return view('pages.blog.blog', compact('posts'));
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -94,7 +97,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tag.tag-edit',compact('tag'));
     }
 
     /**
@@ -106,7 +109,16 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required|unique:tags',
+        ]);
+
+        $tag->name = $request->name;
+        $tag->slug = Str::slug($request->name,'-');
+        $tag->save();
+
+        return  redirect()->route('tag')->withSuccess('Tag updated');
     }
 
     /**
