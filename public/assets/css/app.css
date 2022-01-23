@@ -321,3 +321,10 @@
 .left-sidebar .category-post li a.active {
   color: var(--main-theme-color);
 }
+
+.user_avatar {
+  width: 150px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 150px;
+}

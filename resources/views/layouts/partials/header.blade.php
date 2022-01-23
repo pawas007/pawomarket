@@ -190,7 +190,7 @@
                 <div class="user_account">
                     <a href="{{ route('dashboard') }}">
                         @if(auth()->user()->avatar)
-                            <img src="{{auth()->user()->avatar}}" alt="avatar">
+                            <img src="{{Storage::url(auth()->user()->avatar)}}" alt="avatar" class="user_avatar">
                         @endif
                         {{auth()->user()->name}}</a>
                 </div>
@@ -247,7 +247,7 @@
             <div class="user_account">
                 <a href="{{ route('dashboard') }}">
                     @if(auth()->user()->avatar)
-                        <img src="{{auth()->user()->avatar}}" alt="avatar">
+                        <img src="{{Storage::url(auth()->user()->avatar)}}" alt="avatar" class="user_avatar">
                     @endif
                     {{auth()->user()->name}}</a>
 

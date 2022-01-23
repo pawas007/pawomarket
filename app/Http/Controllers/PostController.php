@@ -49,7 +49,6 @@ class PostController extends Controller
     }
 
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -78,7 +77,7 @@ class PostController extends Controller
             //download img
             if ($request->has('image')) {
                 $image = $request->file('image');
-                $imgName = time().$image->getClientOriginalName();
+                $imgName = time() . $image->getClientOriginalName();
                 $path = $image->storeAs('blog/posts', $imgName);
                 $post->image = $path;
 
@@ -123,9 +122,8 @@ class PostController extends Controller
     {
         $categories = CategoryPost::all();
         $tags = Tag::all();
-        $post = Post::where('id',$post->id)->with('tags', 'comments', 'categories')->with('comments')->first();
-        return view('admin.posts.edit-post', compact('post','categories','tags'));
-
+        $post = Post::where('id', $post->id)->with('tags', 'comments', 'categories')->with('comments')->first();
+        return view('admin.posts.edit-post', compact('post', 'categories', 'tags'));
 
 
     }
@@ -164,10 +162,10 @@ class PostController extends Controller
             $post->tags()->sync($request->tags);
 
             //download img
-            if ($request->has('image')) {
+            if ($request->hasFile('image')) {
                 Storage::delete($post->image);
                 $image = $request->file('image');
-                $imgName = time().$image->getClientOriginalName();
+                $imgName = time() . $image->getClientOriginalName();
                 $path = $image->storeAs('blog/posts', $imgName);
                 $post->image = $path;
 
@@ -177,12 +175,10 @@ class PostController extends Controller
             DB::commit();
             return redirect()->back()->withSuccess('Post updated');
 
-        }catch (Throwable $e) {
-        DB::rollBack();
-        return redirect()->back()->withSuccess('Error');
-    }
-
-
+        } catch (Throwable $e) {
+            DB::rollBack();
+            return redirect()->back()->withSuccess('Error');
+        }
 
     }
 

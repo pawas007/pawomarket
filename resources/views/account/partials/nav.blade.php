@@ -4,9 +4,7 @@
         <ul role="tablist" class="nav flex-column dashboard-list">
             <li><a href="{{ route('dashboard') }} " class="@activeroute('dashboard')"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
             <li> <a href="{{ route('orders') }}" class="@activeroute('orders')"><i class="fas fa-cart-arrow-down"></i>Orders</a></li>
-            <li><a href="{{ route('details') }}"  class="@activeroute('details')"><i class="fas fa-user"></i>Account
-                    details</a>
-            </li>
+            <li><a href="{{ route('account') }}"  class="@activeroute('account')"><i class="fas fa-user"></i>My account</a></li>
             <form method="POST" action="{{ route('logout') }}">
                     @csrf
                 <button type="submit" class="logout_dash"> <i class="fas fa-sign-out-alt"></i> Logout</button>

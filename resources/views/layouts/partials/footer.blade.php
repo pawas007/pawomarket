@@ -93,4 +93,5 @@
     </div>
 </section>
 
+@include('modals.modals')
 

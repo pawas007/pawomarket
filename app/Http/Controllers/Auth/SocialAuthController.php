@@ -36,7 +36,6 @@ class SocialAuthController extends Controller
                     'email' => $userSocial->email,
                     'password' => encrypt('secret_key'),
                     'google_id' => $userSocial->id,
-                    'avatar' => $userSocial->avatar
                 ]);
                 Auth::login($user);
                 return redirect()->route('dashboard');

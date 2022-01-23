@@ -28,15 +28,6 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo Route::currentRouteNamed($route) ? 'active' : '' ?>";
         });
 
-
-
-
-//        Blade::directive('activefilter', function ($slug) {
-//
-/*            return "<?php ; ?>";*/
-//        });
-
-
         Blade::directive('activefiltertag', function ($expression) {
             return "<?php echo route('post.tag', {$expression}) == url()->current() ? 'active' : ''; ?>";
         });

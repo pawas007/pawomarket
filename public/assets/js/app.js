@@ -2078,7 +2078,7 @@ $('.custom-dropdown-trigger').on('click', function (e) {
 var subHasActive = $('.sub-menu-custom a').hasClass('active');
 subHasActive && $('.sub-menu-custom a.active').parent().parent().prev().addClass('active');
 subHasActive && $('.sub-menu-custom a.active').parent().parent().parent().addClass('active');
-$('#postImage').on('change', function () {
+$('#postImage , #accountImage').on('change', function () {
   if (this.files[0]) {
     var picture = new FileReader();
     picture.readAsDataURL(this.files[0]);

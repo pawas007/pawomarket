@@ -24,14 +24,19 @@ class InstagramController extends Controller
 
     public function setInstaSettings(Request $request)
     {
-        try {
+
+            $this->validate($request, [
+                'name' => 'required',
+                'password' => 'required',
+                'account' => 'required',
+            ]);
+
+
             $instaData = Instagram::findOrFail(1);
             $instaData->fill($request->all());
             $instaData->save();
             return redirect()->back()->withSuccess('Settings saved');
-        } catch (Throwable $e) {
-            return redirect()->back()->withErrors('DB Error');
-        }
+
     }
 
     /**
@@ -43,6 +48,10 @@ class InstagramController extends Controller
     public function getInstaPosts()
     {
         try {
+
+
+
+
             $instagramSettings = Instagram::findOrFail(1);
             File::cleanDirectory(public_path('/assets/img/instagram/'));
             Cache::forget('instagram');

@@ -9,6 +9,7 @@ use App\Http\Controllers\InstagramController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,9 +63,14 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
     Route::get('orders', function () {
         return view('account.pages.orders');
     })->name('orders');
-    Route::get('details', function () {
-        return view('account.pages.account-details');
-    })->name('details');
+
+
+    Route::get('account', [ UserController::class,'show'])->name('account');
+
+    Route::patch('account-update/{id}', [ UserController::class,'update'])->name('update.account');
+    Route::patch('password-update', [ UserController::class,'updatePassword'])->name('update.password');
+
+
 });
 
 
