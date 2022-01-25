@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,37 +24,26 @@ use App\Http\Controllers\Auth\UserController;
 */
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 //Blog
-Route::get('blog', [PostController::class, 'index'])->name('blog');
-Route::get('blog/single/{slug}', [PostController::class, 'show'])->name('single.blog');
-Route::post('blog/search', [PostController::class, 'search'])->name('search.blog');
 
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', [PostController::class, 'index'])->name('blog');
+    Route::get('single/{slug}', [PostController::class, 'show'])->name('single.blog');
+    Route::post('search', [PostController::class, 'search'])->name('search.blog');
+    Route::post('comment/create', [PostController::class, 'commentCreate'])->name('add.post.comment');
+    Route::get('tag/{slug}', [TagController::class, 'tagFilter'])->name('post.tag');
+    Route::get('category/{slug}', [CategoryPostController::class, 'postFilter'])->name('post.category');
+});
 
-Route::post('blog/comment/create', [PostController::class, 'commentCreate'])->name('add.post.comment');
-//Blog end
-//Tags
-Route::get('blog/tag/{slug}', [TagController::class, 'tagFilter'])->name('post.tag');
-//Tags end
-//Category
-Route::get('blog/category/{slug}', [CategoryPostController::class, 'postFilter'])->name('post.category');
-//Category end
 //Contact us
 Route::get('contact-us', [ContactUsController::class, 'index'])->name('contacts');
 Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create.contacts');
 //Contact us end
-Route::get('about-us', function () {
-    return view('pages.about-us');
-})->name('about');
-Route::get('faq', function () {
-    return view('pages.faq');
-})->name('faq');
-Route::get('privacy-policy', function () {
-    return view('pages.privacy-policy');
-})->name('privacy-policy');
-Route::get('shop', function () {
-    return view('pages.shop.shop');
-})->name('shop');
+
+
+Route::group(['prefix' => 'products'], function () {
+    Route::get('/', [ProductController::class, 'index'])->name('shop');
+});
 
 
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
@@ -65,24 +55,24 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
     })->name('orders');
 
 
-    Route::get('account', [ UserController::class,'show'])->name('account');
-
-    Route::patch('account-update/{id}', [ UserController::class,'update'])->name('update.account');
-    Route::patch('password-update', [ UserController::class,'updatePassword'])->name('update.password');
-
-
+    Route::get('account', [UserController::class, 'show'])->name('account');
+    Route::patch('account-update/{id}', [UserController::class, 'update'])->name('update.account');
+    Route::patch('password-update', [UserController::class, 'updatePassword'])->name('update.password');
 });
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::get('blog-list', [PostController::class, 'blogList'])->name('blog.list');
-    Route::get('blog/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
-    Route::get('blog/post/create', [PostController::class, 'create'])->name('post.create');
-    Route::get('blog/post/edit/{post}', [PostController::class, 'edit'])->name('post.edit');
-    Route::post('blog/post/store', [PostController::class, 'store'])->name('post.store');
-    Route::get('blog/post/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
-    Route::post('blog/post/search', [PostController::class, 'searchPostAdmin'])->name('post.admin.search');
-    Route::patch('blog/post/update/{id}', [PostController::class, 'update'])->name('post.admin.update');
+    Route::group(['prefix' => 'blog'], function () {
+        Route::get('list', [PostController::class, 'blogList'])->name('blog.list');
+        Route::get('post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+        Route::get('post/create', [PostController::class, 'create'])->name('post.create');
+        Route::get('post/edit/{post}', [PostController::class, 'edit'])->name('post.edit');
+        Route::post('post/store', [PostController::class, 'store'])->name('post.store');
+        Route::get('post/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+        Route::get('post/search', [PostController::class, 'searchPostAdmin'])->name('post.admin.search');
+        Route::patch('post/update/{id}', [PostController::class, 'update'])->name('post.admin.update');
+
+    });
 
     //blog end
     Route::resource('tag', TagController::class, ['names' => [
@@ -95,6 +85,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     ]]);
 
+//tag end
     Route::resource('categoryPost', CategoryPostController::class, ['names' => [
         'index' => 'categoryPost',
         'store' => 'categoryPost.store',
@@ -104,8 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     ]]);
 
-
-//tag end
+//postCategory end
     Route::get('instagram', [InstagramController::class, 'index'])->name('admin.instagram');
     Route::get('get-instagram', [InstagramController::class, 'getInstaPosts'])->name('get.instagram');
     Route::post('set-instagram', [InstagramController::class, 'setInstaSettings'])->name('set.instagram.settings');
@@ -118,3 +108,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 Auth::routes();
 Route::get('auth/{provider}', [SocialAuthController::class, 'redirectToProvider']);
 Route::get('auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback']);
+
+
+//Static Pages
+Route::get('about-us', function () {
+    return view('pages.about-us');
+})->name('about');
+Route::get('faq', function () {
+    return view('pages.faq');
+})->name('faq');
+Route::get('privacy-policy', function () {
+    return view('pages.privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');

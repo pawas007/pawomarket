@@ -20,13 +20,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        $posts = Post::orderBy('id', 'desc')->paginate(10)->withPath('?'.$request->getQueryString());
         return view('pages.blog.blog', compact('posts'));
     }
 
-    public function blogList()
+    public function blogList(Request $request)
     {
         $posts = Post::with('categories')->orderBy('id', 'desc')->paginate(10);
         return view('admin.posts.postList', compact('posts'));
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $searchableTitle = $request->search;
-        $posts = Post::where('title', 'LIKE', "%$searchableTitle%")->orderBy('id', 'desc')->paginate(10);
+        $posts = Post::where('title', 'LIKE', "%$searchableTitle%")->orderBy('id', 'desc')->paginate(10)->withPath('?'.$request->getQueryString());
         return view('pages.blog.blog', compact('posts', 'searchableTitle'));
     }
 
@@ -44,7 +44,7 @@ class PostController extends Controller
     public function searchPostAdmin(Request $request)
     {
         $searchableTitle = $request->search;
-        $posts = Post::where('title', 'LIKE', "%$searchableTitle%")->orderBy('id', 'desc')->paginate(10);
+        $posts = Post::where('title', 'LIKE', "%$searchableTitle%")->orderBy('id', 'desc')->paginate(10)->withPath('?'.$request->getQueryString());
         return view('admin.posts.postList', compact('posts'));
     }
 

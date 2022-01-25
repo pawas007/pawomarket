@@ -3398,7 +3398,9 @@ margin-top: 40px;
 .product-variable-color label input:checked~span::after {
     content: "\f00c";
 }
-
+.product-variable-color{
+    display: inline-block;
+}
 .modal_share_icons_one {
     padding-top: 15px;
 }
@@ -3618,7 +3620,7 @@ margin-top: 40px;
     height: 20px;
     width: 20px;
     background-color: #eee;
-    border-radius: 50%;
+    border-radius: 4px;
 }
 
 .custom_boxed:hover input~.checkmark {

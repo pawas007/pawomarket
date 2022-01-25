@@ -22,3 +22,123 @@
     object-fit: cover;
     height: 150px
 }
+
+
+.price_range{
+
+    #slider {
+
+    }
+
+    .values {
+        text-align: center;
+        margin-top: 20px;
+
+    }
+    .values input {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        color: #222;
+        font-size: 1.1em;
+        text-align: center;
+        font-family: "Exo 2", sans-serif;
+    }
+
+    .ui-slider {
+        margin: 40px 8px;
+        height: 5px;
+        border: 1px solid #ddd;
+        height: 5px;
+        background-color: #fefefe;
+        outline: none;
+        display: block;
+        position: relative;
+        border-radius: 2px;
+        box-shadow: 0 1px 1px #fff, inset 0 1px 1px #ddd;
+    }
+    .ui-slider .ui-slider-handle {
+        border-radius: 10em;
+        top: 0;
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 20px;
+        top: -8px;
+        margin-left: -10px;
+        outline: none;
+        cursor: default;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 1px #999;
+        background-color: #f1f1f1;
+    }
+    .ui-slider .ui-slider-handle span {
+        color: var(--main-theme-color);
+        display: inline-block;
+        transform: translate(-25%, -20px);
+        text-align: center;
+        width: 40px;
+
+    }
+    .ui-slider .ui-slider-range {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        z-index: 1;
+        font-size: 0.7em;
+        display: block;
+        border: 0;
+        background-color: #f79837;
+        opacity: 0.8;
+    }
+    .ui-slider.ui-state-disabled .ui-slider-handle, .ui-slider.ui-state-disabled .ui-slider-range {
+        filter: inherit;
+    }
+    .ui-slider .ui-slider-range-min {
+        left: 0;
+    }
+    .ui-slider .ui-slider-range-max {
+        right: 0;
+    }
+
+    .switch-wrap {
+        margin-top: 30px;
+    }
+
+    .switch {
+        position: relative;
+        width: 55px;
+    }
+    .switch label {
+        width: 55px;
+        height: 23px;
+        position: absolute;
+        background-color: #999;
+        top: 0;
+        left: 0;
+        border-radius: 50px;
+    }
+    .switch input[type=checkbox] {
+        visibility: hidden;
+    }
+    .switch label:after {
+        content: "";
+        width: 21px;
+        height: 21px;
+        border-radius: 50px;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        transition: all 0.1s;
+        background-color: white;
+    }
+    .switch input[type=checkbox]:checked + label {
+        background-color: green;
+        opacity: 0.8;
+    }
+    .switch input[type=checkbox]:checked + label:after {
+        left: 33px;
+    }
+
+
+}

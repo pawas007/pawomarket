@@ -2,15 +2,13 @@
 @section('title', 'Posts')
 @section('pages')
     @include('pages.partials.messages')
-
-
     <div class="row">
         <div class="col-12">
         <h2 class="h2">Post list</h2>
             <hr>
             <h6 class="h6">Search</h6>
-            <form action="{{route('post.admin.search')}}" method="POST">
-                @csrf
+            <form action="{{route('post.admin.search')}}" method="get">
+     
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="search" placeholder="Post title" value="{{old('search', request()->search)}}">
                     <div class="input-group-append">

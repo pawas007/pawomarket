@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-
     public function destroy($id){
         Comment::find($id)->delete();
         return redirect()->back()->withSuccess('Comment removed');

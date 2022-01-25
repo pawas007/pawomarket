@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             CategoryPostSeeder::class,
             InstagramSeader::class,
             ContactSeeder::class,
+            AttributesSeeder::class,
+            ProductSeeder::class,
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

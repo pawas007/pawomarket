@@ -24,7 +24,6 @@ class InstagramController extends Controller
 
     public function setInstaSettings(Request $request)
     {
-
             $this->validate($request, [
                 'name' => 'required',
                 'password' => 'required',
@@ -48,9 +47,6 @@ class InstagramController extends Controller
     public function getInstaPosts()
     {
         try {
-
-
-
 
             $instagramSettings = Instagram::findOrFail(1);
             File::cleanDirectory(public_path('/assets/img/instagram/'));

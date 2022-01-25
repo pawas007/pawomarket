@@ -4,7 +4,6 @@
 @section('title', 'Home')
 @extends('layouts.app')
 @section('pages')
-
     <!-- Banner Area -->
     <section id="banner_one">
         <div class="container">

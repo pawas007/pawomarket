@@ -6,8 +6,6 @@ use Illuminate\Support\Str;
 
 trait NameSlug
 {
-
-
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;

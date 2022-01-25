@@ -15,7 +15,6 @@ class SocialAuthController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-
     /**
      * Obtain the user information from provider.
      *
@@ -44,8 +43,6 @@ class SocialAuthController extends Controller
         } catch (Exception $exception) {
             dd($exception->getMessage());
         }
-
-
     }
 
     /**

@@ -18,10 +18,12 @@
         </div>
         <!-- Sidebar single item -->
         <!-- Sidebar single item -->
+        @if(count($categories))
         <div class="sidebar-widget mt-40px">
             <h3 class="sidebar-title">Categories</h3>
             <div class="category-post">
                 <ul>
+
                     @foreach($categories as $category)
                         <li>
                             <a href="{{ route('post.category',['slug' => $category->slug])}}" class="@activefiltercat($category->slug)">{{$category->name}} <span>(   {{count($category->posts)}})</span> </a>
@@ -30,6 +32,7 @@
                 </ul>
             </div>
         </div>
+        @endif
         <!-- Sidebar single item -->
         @if($tags)
             <div class="sidebar-widget mt-40px">
