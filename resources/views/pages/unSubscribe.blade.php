@@ -28,7 +28,7 @@
                             @endif
                             <div class="default-form-box">
                                 <label>{{ __('E-Mail Address') }}</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" < autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus>
                             </div>
                             <div class="login_submit">
                                 <button class="theme-btn-one btn-black-overlay btn_md" type="submit">        {{ __('Login') }}</button>
