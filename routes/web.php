@@ -11,7 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\StaticPages;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,6 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('tag/{slug}', [TagController::class, 'tagFilter'])->name('post.tag');
     Route::get('category/{slug}', [CategoryPostController::class, 'postFilter'])->name('post.category');
 });
-
 //Contact us
 Route::get('contact-us', [ContactUsController::class, 'index'])->name('contacts');
 Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create.contacts');
@@ -95,7 +95,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     ]]);
 
-//postCategory end
+    //postCategory end
+
+    Route::get('update-currency', [CurrencyController::class, 'updateCurrencyValues'])->name('update.currency');
+    Route::get('currency', [CurrencyController::class, 'index'])->name('currency');
+    Route::get('set-main-currency/{id}', [CurrencyController::class, 'setMainCurrency'])->name('set.main.currency');
+    Route::get('remove-currency/{id}', [CurrencyController::class, 'destroy'])->name('remove.currency');
+    Route::post('store-currency', [CurrencyController::class, 'store'])->name('store.currency');
+
+
+
+
+    //    currency end
+
     Route::get('instagram', [InstagramController::class, 'index'])->name('admin.instagram');
     Route::get('get-instagram', [InstagramController::class, 'getInstaPosts'])->name('get.instagram');
     Route::post('set-instagram', [InstagramController::class, 'setInstaSettings'])->name('set.instagram.settings');
@@ -111,14 +123,10 @@ Route::get('auth/{provider}/callback', [SocialAuthController::class, 'handleProv
 
 
 //Static Pages
-Route::get('about-us', function () {
-    return view('pages.about-us');
-})->name('about');
-Route::get('faq', function () {
-    return view('pages.faq');
-})->name('faq');
-Route::get('privacy-policy', function () {
-    return view('pages.privacy-policy');
-})->name('privacy-policy');
-
+Route::get('about-us', [StaticPages::class,'about'] )->name('about');
+Route::get('faq', [StaticPages::class,'faq'])->name('faq');
+Route::get('privacy-policy', [StaticPages::class,'privacyPolicy'])->name('privacy-policy');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('change-currency/{id}', [CurrencyController::class, 'changeCurrency'])->name('change.currency');

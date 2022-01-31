@@ -1,17 +1,8 @@
-<!-- Preloader Area -->
-<div id="preloader">
-    <div id="status">
-        <div class="cssload-container">
-            <ul class="cssload-flex-container">
-                <li>
-                    <span class="cssload-loading cssload-one"></span>
-                    <span class="cssload-loading cssload-two"></span>
-                    <span class="cssload-loading-center"></span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+
+
+@include('layouts.partials.header.preloader')
+
+@include('layouts.partials.header.top-header')
 
 
 <!-- Start Header Area -->
@@ -32,7 +23,7 @@
                         <!-- Start Header Main Menu -->
                         <div class="main-menu menu-color--black menu-hover-color--golden">
                             <nav>
-                                @include('layouts.partials.main-nav')
+                                @include('layouts.partials.header.main-nav')
                             </nav>
                         </div>
                         <!-- End Header Main Menu Start -->
@@ -145,7 +136,7 @@
             <!-- Start Mobile Menu Nav -->
             <div class="offcanvas-menu">
 
-                      @include('layouts.partials.main-nav')
+                @include('layouts.partials.header.main-nav')
             </div>
             <!-- End Mobile Menu Nav -->
         </div>

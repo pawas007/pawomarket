@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Currency;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+//        add custom derectives
+
         Blade::directive('activeroute', function ($route) {
             return "<?php echo Route::currentRouteNamed($route) ? 'active' : '' ?>";
         });
@@ -36,7 +40,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('activefiltercat', function ($expression) {
             return "<?php echo route('post.category', {$expression}) == url()->current() ? 'active' : ''; ?>";
         });
-
 
 
 

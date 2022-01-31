@@ -178,10 +178,12 @@ return [
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
 
         /*
-         * View composers
+         * View composers & custom providers
          */
         App\Providers\Composer\Views\Sidebar::class,
         \App\Providers\Composer\Views\InstagramProvider::class,
+        \App\Providers\Composer\Views\HeaderProvider::class,
+        \App\Providers\SetDefaultCurrencyProvider::class,
 
     ],
 

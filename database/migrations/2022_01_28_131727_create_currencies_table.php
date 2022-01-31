@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('symbol');
+            $table->decimal('value',8,3)->nullable();
+            $table->tinyInteger('is_main')->default(0);
             $table->timestamps();
-            $table->string('slug');
-            $table->string('title');
-            $table->text('content');
-            $table->mediumText('short_description');
-//            $table->softDeletes();
-            $table->string('image')->nullable();
         });
     }
 
@@ -32,6 +30,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('currencies');
     }
 }

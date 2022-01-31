@@ -17,15 +17,19 @@ class ProductSeeder extends Seeder
 
     public function run()
     {
+
+        $productNames = ['T-Shirt Form Girls','Woman Full Silver Dress','Blue Dress ','Woman Full Red Dress'];
+
         Product::truncate();
         $faker = Faker::create();
         for ($i = 1; $i <= 20; $i++) {
             $product = new Product();
-            $product->name = $faker->jobTitle;
-            $product->sku = $faker->randomLetter.'ASYUUA';
+            $product->name = $productNames[array_rand($productNames)];
+            $product->vendor_code = strtoupper($faker->regexify('[A-Za-z0-9]{6}'));
             $product->description =$faker->text(666);
             $product->information=$faker->paragraph(5);
-            $product->old_price = $faker->numberBetween(500,700);
+            $product->new=rand(0,1);
+            $product->hot=rand(0,1);
             $product->price = $faker->numberBetween(400,500);
             $product->save();
            $product->attributeValues()->sync([1,2,3,4,5]);

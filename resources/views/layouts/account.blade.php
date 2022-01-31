@@ -8,6 +8,7 @@
 
     <title>{{env('APP_NAME')}} | @yield('title')</title>
 
+
 @include('layouts.partials.favicon')
 <!-- Scripts -->
     <script src="{{ asset('assets/js/theme/jquery-3.6.0.min.js') }}" defer></script>
@@ -15,7 +16,6 @@
     <script src="{{ asset('assets/js/theme/owl.carousel.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/menu.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/count.js') }}" defer></script>
-
     <script src="{{ asset('assets/js/theme/custom.js') }}" defer></script>
     <script src="{{ asset('assets/js/app.js') }}" defer></script>
 @stack('scripts')
@@ -28,6 +28,9 @@
     <link href="{{ asset('assets/css/theme/color.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/theme/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    @stack('style')
+
+
 </head>
 <body>
 @include('layouts.partials.header')

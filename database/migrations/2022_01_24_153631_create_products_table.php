@@ -18,14 +18,14 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->decimal('price',10,2);
-            $table->decimal('old_price',10,2)->nullable();
-            $table->string('sku');
+            $table->string('vendor_code');
             $table->text('description');
             $table->text('information')->nullable();
             $table->boolean('new')->nullable();
             $table->boolean('hot')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
+//            $table->softDeletes();
         });
     }
 

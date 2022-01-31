@@ -1,5 +1,5 @@
 <!-- Modal Area Start-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="fast_check_product" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="product_one_modal_top modal-content">
             <button type="button" class="close close_modal_icon" data-dismiss="modal" aria-label="Close">
@@ -96,7 +96,7 @@
 </div>
 <!-- Modal Area End-->
 
-<div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg theme-modal" id="subscribe" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body modal1 modal-bg">
@@ -146,6 +146,6 @@
 <div class="cookie-bar">
     <p>We use cookies to improve our site and your shopping experience. By continuing to browse our site you accept
         our cookie policy.</p>
-    <a href="javascript:void(0)" class="btn theme-btn-one bg-black btn_sm">accept</a>
-    <a href="javascript:void(0)" class="btn theme-btn-one bg-black btn_sm">decline</a>
+    <a href="accept_cookie" class="btn theme-btn-one bg-black btn_sm accept_cookie">accept</a>
+    <a href="decline_cookie" class="btn theme-btn-one bg-black btn_sm decline_cookie" >decline</a>
 </div>

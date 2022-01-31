@@ -2087,37 +2087,6 @@ $('#postImage , #accountImage').on('change', function () {
     });
   }
 });
-$(function () {
-  //range filter
-  var handle1 = $(".myCustom-handle1 span");
-  var handle2 = $(".myCustom-handle2 span");
-  $("#slider").slider({
-    range: true,
-    min: minVal,
-    max: maxVal,
-    step: 1,
-    values: [minVal, maxVal],
-    animate: 300,
-    create: function create(event, ui) {
-      handle1.text($(this).slider("values", 0));
-      handle2.text($(this).slider("values", 1));
-    },
-    slide: function slide(event, ui) {
-      for (var i = 0; i < ui.values.length; ++i) {
-        $("input.sliderValue[data-index=" + i + "]").val(ui.values[i]);
-      }
-
-      handle1.text(ui.values[0]);
-      handle2.text(ui.values[1]);
-    }
-  });
-  $("input.sliderValue").change(function () {
-    var $this = $(this);
-    $("#slider").slider("values", $this.data("index"), $this.val());
-    console.log($this.data("index"));
-    $(".myCustom-handle".concat($this.data("index") + 1)).find('span').text($this.val());
-  });
-});
 
 /***/ }),
 

@@ -33,9 +33,13 @@
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="sub-menu-custom">
+                    <li><a href="{{ route('currency') }}"   class="@activeroute('currency')"> <i class="fas fa-money-bill-wave"></i>Currency</a></li>
                     <li><a href="{{ route('admin.instagram') }} " class="@activeroute('admin.instagram')"><i class="fab fa-instagram"></i>Instagram</a></li>
                 </ul>
             </li>
+
+
+
             <li><a href="{{ route('contacts.admin') }}"   class="@activeroute('contacts.admin')">   <i class="far fa-list-alt"></i>Contact form</a></li>
         </ul>
     </div>

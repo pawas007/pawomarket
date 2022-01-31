@@ -18,16 +18,16 @@
                 items: 1,
             },
             480: {
-                items:2,
+                items: 2,
             },
             576: {
-                items:2,
+                items: 2,
             },
             768: {
-                items:3,
+                items: 3,
             },
             1200: {
-                items:4,
+                items: 4,
             }
         }
     });
@@ -46,13 +46,13 @@
                 items: 2,
             },
             768: {
-                items:3,
+                items: 3,
             },
             992: {
-                items:4,
+                items: 4,
             },
             1200: {
-                items:5,
+                items: 5,
             }
         }
     });
@@ -70,13 +70,13 @@
                 items: 1,
             },
             768: {
-                items:1,
+                items: 1,
             },
             992: {
-                items:1,
+                items: 1,
             },
             1200: {
-                items:1,
+                items: 1,
             }
         }
     });
@@ -98,50 +98,50 @@
                 items: 1,
             },
             768: {
-                items:2,
+                items: 2,
             },
             992: {
-                items:3,
+                items: 3,
             },
             1200: {
-                items:4,
+                items: 4,
             }
         }
     });
 
-/*===========================================
-			Furniture Banner Slider
-=============================================*/
+    /*===========================================
+                Furniture Banner Slider
+    =============================================*/
     $(".furniture_slider_box").owlCarousel({
-      animateOut: "fadeOut",
-      animateIn: "fadeIn",
-      loop: true,
-      margin: 0,
-      nav: false,
-      singleItem: true,
-      smartSpeed: 500,
-      autoplay: true,
-      autoplayTimeout: 6000,
-      navText: [
-        '<span class="fas fa-angle-left"></span>',
-        '<span class="fas fa-angle-right"></span>'
-      ],
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 1
-        },
-        1024: {
-          items: 1
+        animateOut: "fadeOut",
+        animateIn: "fadeIn",
+        loop: true,
+        margin: 0,
+        nav: false,
+        singleItem: true,
+        smartSpeed: 500,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        navText: [
+            '<span class="fas fa-angle-left"></span>',
+            '<span class="fas fa-angle-right"></span>'
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1024: {
+                items: 1
+            }
         }
-      }
     });
 
-/*===========================================
-		Furniture Popular Product
-=============================================*/
+    /*===========================================
+            Furniture Popular Product
+    =============================================*/
     $(".furniture_popular_slider").owlCarousel({
         animateOut: "fadeOut",
         animateIn: "fadeIn",
@@ -153,112 +153,116 @@
         autoplay: true,
         autoplayTimeout: 6000,
         navText: [
-          '<span class="fas fa-angle-left"></span>',
-          '<span class="fas fa-angle-right"></span>'
+            '<span class="fas fa-angle-left"></span>',
+            '<span class="fas fa-angle-right"></span>'
         ],
         responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 2
-          },
-          1024: {
-            items: 3
-          }
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1024: {
+                items: 3
+            }
         }
-      });
+    });
 
 
-/*===========================================
-			Electronics Banner Slider
-=============================================*/
+    /*===========================================
+                Electronics Banner Slider
+    =============================================*/
     $(".electronics_slider_box").owlCarousel({
         animateOut: "fadeOut",
         animateIn: "fadeIn",
         loop: true,
         margin: 0,
-        dots:false,
+        dots: false,
         nav: true,
         singleItem: true,
         smartSpeed: 500,
         autoplay: true,
         autoplayTimeout: 6000,
         navText: [
-          '<span class="fas fa-angle-left"></span>',
-          '<span class="fas fa-angle-right"></span>'
+            '<span class="fas fa-angle-left"></span>',
+            '<span class="fas fa-angle-right"></span>'
         ],
         responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 1
-          },
-          1024: {
-            items: 1
-          }
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1024: {
+                items: 1
+            }
         }
-      });
+    });
 
 
-/*===========================================
-	   Weekly Deal Product
-=============================================*/
-$(".elce_weekly_slider").owlCarousel({
-  animateOut: "fadeOut",
-  animateIn: "fadeIn",
-  loop: true,
-  margin: 30,
-  nav: true,
-  dots:false,
-  singleItem: true,
-  smartSpeed: 500,
-  autoplay: true,
-  autoplayTimeout: 6000,
-  navText: [
-    '<span class="fas fa-angle-left"></span>',
-    '<span class="fas fa-angle-right"></span>'
-  ],
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 2
-    },
-    1024: {
-      items: 4
-    }
-  }
-});
+    /*===========================================
+           Weekly Deal Product
+    =============================================*/
+    $(".elce_weekly_slider").owlCarousel({
+        animateOut: "fadeOut",
+        animateIn: "fadeIn",
+        loop: true,
+        margin: 30,
+        nav: true,
+        dots: false,
+        singleItem: true,
+        smartSpeed: 500,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        navText: [
+            '<span class="fas fa-angle-left"></span>',
+            '<span class="fas fa-angle-right"></span>'
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1024: {
+                items: 4
+            }
+        }
+    });
 
-/*=====================
- 24. Cookiebar
- ==========================*/
 
-window.setTimeout(function () {
-  $(".cookie-bar").addClass('show')
-}, 5000);
-
-$('.cookie-bar .btn, .cookie-bar .btn-close').on('click', function () {
-  $(".cookie-bar").removeClass('show')
-});
 // Offer Modal
 // $(window).on('load', function () {
 //   setTimeout(function () {
-//       $('#exampleModal').modal('show');
+//       $('#subscribe').modal('show');
 //   }, 500);
 // });
-// Preeloader
-$(window).on("load", function() {
-  $("#status").fadeOut();
-  $("#preloader")
-    .delay(350)
-    .fadeOut("slow");
-});
 
 
-
-
+// Cookies
+    if (localStorage.getItem("cookie") === null) {
+        window.setTimeout(function () {
+            $(".cookie-bar").addClass('show')
+        }, 5000);
+    }
+    $('.accept_cookie').on('click', function (e) {
+        e.preventDefault();
+        localStorage.setItem('cookie', 'accept');
+        $(".cookie-bar").removeClass('show')
+    });
+    $('.decline_cookie').on('click', function (e) {
+        e.preventDefault();
+        localStorage.setItem('cookie', 'decline');
+        $(".cookie-bar").removeClass('show')
+    });
+    // Preeloader
+    $(window).on("load", function () {
+        $("#status").fadeOut();
+        $("#preloader")
+            .delay(350)
+            .fadeOut("slow");
+    });
 }(jQuery));

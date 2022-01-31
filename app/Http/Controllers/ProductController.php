@@ -13,14 +13,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $priceRange = ['max' => Product::max('price'),'min'=>Product::min('price')];
-
-
         $attributes = Attribute::with('values')->orderByDesc('name')->get();
-        return view('pages.shop.shop', compact('attributes','priceRange'));
+
+        $products = Product::with('attributeValues')->paginate(12)->withPath('?'.$request->getQueryString());
+        return view('pages.shop.shop', compact('attributes','priceRange','products'));
     }
 
     /**
@@ -88,4 +88,8 @@ class ProductController extends Controller
     {
         //
     }
+
+
+
+
 }
