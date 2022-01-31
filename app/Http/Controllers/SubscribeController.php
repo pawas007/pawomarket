@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\CurrencyConversion;
-use App\Models\Attribute;
-use App\Models\Product;
+use App\Models\Subscribe;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class SubscribeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-        $priceRange = ['max' => CurrencyConversion::convert(Product::max('price'))  ,'min'=>CurrencyConversion::convert(Product::min('price'))];
-        $attributes = Attribute::with('values')->orderByDesc('name')->get();
-
-        $products = Product::with('attributeValues')->paginate(12)->withPath('?'.$request->getQueryString());
-        return view('pages.shop.shop', compact('attributes','priceRange','products'));
+        //
     }
 
     /**
@@ -42,16 +35,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            ['email' => 'required|unique:subscribes'],
+            ['email.unique' => 'Email already subscribed']
+        );
+        $subscriber = new Subscribe();
+        $subscriber->email = $request->email;
+        $subscriber->save();
+        return redirect()->back()->with('subscribeSuccess', 'Subscribe success');
     }
+
+
+    public function unSubscribePage(){
+
+        return view('pages.unSubscribe');
+
+    }
+
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Subscribe  $subscribe
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Subscribe $subscribe)
     {
         //
     }
@@ -59,10 +68,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Subscribe  $subscribe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Subscribe $subscribe)
     {
         //
     }
@@ -71,10 +80,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Subscribe  $subscribe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Subscribe $subscribe)
     {
         //
     }
@@ -82,15 +91,11 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Subscribe  $subscribe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Subscribe $subscribe)
     {
         //
     }
-
-
-
-
 }

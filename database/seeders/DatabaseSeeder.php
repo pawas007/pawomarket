@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             AttributesSeeder::class,
             ProductSeeder::class,
             CurrencySeeder::class,
+            SubscriberSeeder::class
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

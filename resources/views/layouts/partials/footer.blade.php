@@ -6,7 +6,8 @@
                 <div class="footer_left_side">
                     <a class="logo_head" href="{{route('home')}}">Pawo</a>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati culpa assumenda voluptas placeat amet consectetur adipisicing elit. Obcaecati culpa assumenda voluptas placeat.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati culpa assumenda voluptas
+                        placeat amet consectetur adipisicing elit. Obcaecati culpa assumenda voluptas placeat.
                     </p>
                     <div class="footer_left_side_icon">
                         <ul>
@@ -59,14 +60,32 @@
                 <div class="footer_one_widget">
                     <h3>NEWSLETTER</h3>
                     <div id="mc_embed_signup" class="subscribe-form">
-                        <form>
+
+
+                        <form action="{{route('subscribe.store')}}" method="POST">
+                            @csrf
+
                             <div class="mc-form">
-                                <input class="form-control" type="email" required="" placeholder="Your Mail*" name="EMAIL" value="" />
-                                <div class="clear">
-                                    <button class="theme-btn-one btn_md" type="submit" name="subscribe" value="">
-                                        <i class="icon-cursor"></i> Send Mail
+                                @if($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        {{$errors->first('email')}}
+                                    </div>
+                                @endif
+                                @if(session()->has('subscribeSuccess'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('subscribeSuccess') }}
+                                    </div>
+                                @endif
+                                    <input class="form-control @error('email') is-invalid @enderror" type="text"
+                                       placeholder="Your Mail*" name="email" value="{{old('email')}}"/>
+
+                                <div class="clear d-flex align-items-end justify-content-between">
+                                    <button class="theme-btn-one btn_md" type="submit">
+                                        <i class="icon-cursor"></i> Subscribe
                                     </button>
+                                    <a href="{{route('unsubscribe')}}">unsubscribe</a>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -86,7 +105,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="copyright_right">
-                    <img src="/assets/img/common/payment.png" alt="img" />
+                    <img src="/assets/img/common/payment.png" alt="img"/>
                 </div>
             </div>
         </div>

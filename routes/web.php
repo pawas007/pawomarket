@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\StaticPages;
+use App\Http\Controllers\SubscribeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,3 +131,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('change-currency/{id}', [CurrencyController::class, 'changeCurrency'])->name('change.currency');
+Route::resource('subscribe', SubscribeController::class)->only('store');
+Route::get('unsubscribe', [SubscribeController::class,'unSubscribePage'])->name('unsubscribe');
+
