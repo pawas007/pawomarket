@@ -5,8 +5,8 @@
         </a>
     </li>
     <li>
-        <a href="{{route('shop')}}"
-           class=" main-menu-link @activeroute('shop')">
+        <a href="{{route('products.index')}}"
+           class=" main-menu-link @activeroute('products.index')">
             Shop
         </a>
     </li>

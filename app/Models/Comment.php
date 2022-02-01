@@ -17,6 +17,7 @@ class Comment extends Model
         'name',
         'email',
         'message',
+        'rating'
     ];
 
     public function commentable()

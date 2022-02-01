@@ -42,9 +42,8 @@ Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create
 //Contact us end
 
 
-Route::group(['prefix' => 'products'], function () {
-    Route::get('/', [ProductController::class, 'index'])->name('shop');
-});
+
+Route::resource('products', ProductController::class)->only('index','show');
 
 
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {

@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->decimal('price',10,2);
+            $table->decimal('old_price',10,2)->nullable();
             $table->string('vendor_code');
             $table->text('description');
             $table->text('information')->nullable();

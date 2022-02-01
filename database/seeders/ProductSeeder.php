@@ -31,8 +31,9 @@ class ProductSeeder extends Seeder
             $product->new=rand(0,1);
             $product->hot=rand(0,1);
             $product->price = $faker->numberBetween(400,500);
+            $product->old_price = $faker->numberBetween(600,700);
             $product->save();
-           $product->attributeValues()->sync([1,2,3,4,5]);
+            $product->attributeValues()->sync([1,2,3,4,5]);
         }
     }
 }

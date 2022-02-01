@@ -21,6 +21,7 @@ class CommentSeader extends Seeder
                 'commentable_id' => 30,
                 'commentable_type' => 'App\Models\Post',
                 'name' => 'Jon',
+                'rating' => null,
                 'email' => 'jonredoVich@gmail.com',
                 'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
             ],
@@ -28,20 +29,23 @@ class CommentSeader extends Seeder
                 'commentable_id' => 30,
                 'commentable_type' => 'App\Models\Post',
                 'name' => 'Ivan',
+                'rating' => null,
                 'email' => 'lorenAwq@gmail.com',
                 'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
             ],
             [
-                'commentable_id' => 30,
+                'commentable_id' => 20,
                 'commentable_type' => 'App\Models\Product',
                 'name' => 'Jon',
+                'rating' => 5,
                 'email' => 'jonredoVich@gmail.com',
                 'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
             ],
             [
-                'commentable_id' => 30,
+                'commentable_id' => 20,
                 'commentable_type' => 'App\Models\Product',
                 'name' => 'Jon',
+                'rating' => 4,
                 'email' => 'osticAww@gmail.com',
                 'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<<<<<'
             ]
@@ -54,7 +58,8 @@ class CommentSeader extends Seeder
                 'commentable_type' => $comment['commentable_type'],
                 'name' => $comment['name'],
                 'email' => $comment['email'],
-                'message' => $comment['message']
+                'message' => $comment['message'],
+                'rating' => $comment['rating']
             ]);
 
         }

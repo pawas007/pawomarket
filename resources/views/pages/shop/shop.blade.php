@@ -31,18 +31,13 @@
                     @if(count($products))
                         @foreach($products as $product)
 
-{{$product}}
-
-                            {{--                            @foreach($product->attribute_values as $val)--}}
-                            {{--                            --}}
-                            {{--                            @endforeach--}}
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                 <div class="product_wrappers_one">
                                     <div class="thumb">
-                                        <a href="product-single.html" class="image">
+                                        <a href="{{route('products.show', $product)}}" class="image">
                                             <img src="assets/img/product-image/product3.png" alt="Product">
-                                            <img class="hover-image" src="assets/img/product-image/product4.png"
-                                                 alt="Product">
+{{--                                            <img class="hover-image" src="assets/img/product-image/product4.png"--}}
+{{--                                                 alt="Product">--}}
                                         </a>
                                         <div class="badges">
                                             @if($product->hot)
@@ -67,7 +62,7 @@
                                             To Cart</a>
                                     </div>
                                     <div class="content">
-                                        <h5 class="title"><a href="product-single.html">{{$product->name}}</a></h5>
+                                        <h5 class="title"><a href="{{route('products.show', $product)}}">{{$product->name}}</a></h5>
                                         <div class="price">
                                             <span class="new">   {{$product->currency_symbol}} {{$product->price}}</span>
                                         </div>
@@ -75,7 +70,6 @@
                                 </div>
                             </div>
                         @endforeach
-
                     @else
                         <div class="col-lg-12">
                             <h3 class="h3 pt-3 text-center">Products not found</h3>
@@ -84,7 +78,6 @@
                     <div class="col-lg-12">
                         @include('pages.partials.pagination', ['paginator' => $products])
                     </div>
-
                 </div>
             </div>
         </div>

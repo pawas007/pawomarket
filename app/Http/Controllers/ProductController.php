@@ -16,25 +16,14 @@ class ProductController extends Controller
      */
 
 
-    public function someValue()
-    {
-        return 323;
-    }
-
-
     public function index(Request $request)
     {
 
-        $priceRange = ['max' => 2 ,'min'=>3];
+        $priceRange = ['max' => CurrencyConversion::convert(Product::max('price')), 'min' => CurrencyConversion::convert(Product::min('price'))];
         $attributes = Attribute::with('values')->orderByDesc('name')->get();
 
-        $products = Product::with('attributeValues' )->paginate(12)->withPath('?'.$request->getQueryString());
-
-
-
-
-
-        return view('pages.shop.shop', compact('attributes','priceRange','products'));
+        $products = Product::with('attributeValues')->paginate(12)->withPath('?' . $request->getQueryString());
+        return view('pages.shop.shop', compact('attributes', 'priceRange', 'products'));
     }
 
     /**
@@ -50,7 +39,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -61,18 +50,29 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        //
+        $product->load('comments');
+        $productRaring = [];
+        foreach ($product->comments as $comment) {
+            array_push($productRaring, $comment->rating);
+        }
+        $ratingSummary = $productRaring ? ceil(array_sum($productRaring) / count($productRaring)) : 0;
+
+
+
+
+
+        return view('pages.shop.single.single', compact('product', 'ratingSummary'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -83,8 +83,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -95,15 +95,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
     {
         //
     }
-
-
 
 
 }

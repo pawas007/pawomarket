@@ -27,7 +27,7 @@
     <link href="{{ asset('assets/css/theme/color.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/theme/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-
+@stack('style')
 
 
 </head>
