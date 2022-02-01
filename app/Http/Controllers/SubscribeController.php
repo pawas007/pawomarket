@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Emails\SubscribeSuccess;
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
+
 
 class SubscribeController extends Controller
 {
@@ -14,7 +16,8 @@ class SubscribeController extends Controller
      */
     public function index()
     {
-        //
+        $subscribers = Subscribe::orderBy('id', 'desc')->paginate(10);
+        return view('admin.subscribers', compact('subscribers'));
     }
 
     /**
@@ -30,26 +33,50 @@ class SubscribeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate(
-            $request,
-            ['email' => 'required|unique:subscribes'],
-            ['email.unique' => 'Email already subscribed']
-        );
-        $subscriber = new Subscribe();
-        $subscriber->email = $request->email;
-        $subscriber->save();
-        return redirect()->back()->with('subscribeSuccess', 'Subscribe success');
+
+        $activeUser = Subscribe::where('email', $request->email)->first();
+        if ($activeUser) {
+            if ($activeUser->active){
+                return redirect()->back()->with('subscribeSuccess', 'Email already subscribed');
+            }else{
+                $activeUser->update(["active" => 1]);
+                SubscribeSuccess::dispatch($activeUser->email,$activeUser->id)->beforeCommit()->onQueue('email');
+                return redirect()->back()->with('subscribeSuccess', 'Subscribe success');
+            }
+        } else {
+            $subscriber = new Subscribe();
+            $subscriber->email = $request->email;
+            $subscriber->save();
+            SubscribeSuccess::dispatch($subscriber->email,$subscriber->id)->beforeCommit()->onQueue('email');
+            return redirect()->back()->with('subscribeSuccess', 'Subscribe success');
+        }
+
     }
 
 
-    public function unSubscribePage(){
 
-        return view('pages.unSubscribe');
+
+
+    public function unSubscribe($id)
+    {
+
+
+        $user = Subscribe::find($id);
+
+
+        if($user){
+            $user->update(["active" => 0]);
+            return redirect()->back()->with('subscribeSuccess', 'Unsubscribed');
+
+        }else{
+            return redirect()->route('home');
+        }
+
 
     }
 
@@ -57,7 +84,7 @@ class SubscribeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subscribe  $subscribe
+     * @param \App\Models\Subscribe $subscribe
      * @return \Illuminate\Http\Response
      */
     public function show(Subscribe $subscribe)
@@ -68,7 +95,7 @@ class SubscribeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subscribe  $subscribe
+     * @param \App\Models\Subscribe $subscribe
      * @return \Illuminate\Http\Response
      */
     public function edit(Subscribe $subscribe)
@@ -79,8 +106,8 @@ class SubscribeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subscribe  $subscribe
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Subscribe $subscribe
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Subscribe $subscribe)
@@ -91,7 +118,7 @@ class SubscribeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subscribe  $subscribe
+     * @param \App\Models\Subscribe $subscribe
      * @return \Illuminate\Http\Response
      */
     public function destroy(Subscribe $subscribe)

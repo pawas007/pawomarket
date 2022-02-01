@@ -60,8 +60,6 @@
                 <div class="footer_one_widget">
                     <h3>NEWSLETTER</h3>
                     <div id="mc_embed_signup" class="subscribe-form">
-
-
                         <form action="{{route('subscribe.store')}}" method="POST">
                             @csrf
 
@@ -83,7 +81,7 @@
                                     <button class="theme-btn-one btn_md" type="submit">
                                         <i class="icon-cursor"></i> Subscribe
                                     </button>
-                                    <a href="{{route('unsubscribe')}}">unsubscribe</a>
+
                                 </div>
 
                             </div>
@@ -112,5 +110,5 @@
     </div>
 </section>
 
-@include('modals.modals')
+@include('modals.cookie')
 

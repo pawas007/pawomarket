@@ -234,12 +234,6 @@
     });
 
 
-// Offer Modal
-// $(window).on('load', function () {
-//   setTimeout(function () {
-//       $('#subscribe').modal('show');
-//   }, 500);
-// });
 
 
 // Cookies

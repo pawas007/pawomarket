@@ -114,6 +114,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('set-instagram', [InstagramController::class, 'setInstaSettings'])->name('set.instagram.settings');
     Route::get('contact-request', [ContactUsController::class, 'requestList'])->name('contacts.admin');
 
+    Route::get('subscribers', [SubscribeController::class, 'index'])->name('subscribers');
+
 
 });
 
@@ -132,5 +134,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('change-currency/{id}', [CurrencyController::class, 'changeCurrency'])->name('change.currency');
 Route::resource('subscribe', SubscribeController::class)->only('store');
-Route::get('unsubscribe', [SubscribeController::class,'unSubscribePage'])->name('unsubscribe');
-
+Route::get('unsubscribe/{id}', [SubscribeController::class,'unSubscribe']);

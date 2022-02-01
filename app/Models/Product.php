@@ -40,12 +40,6 @@ protected $appends = ['currency_symbol'];
     {
         return CurrencyProvider::getCurrencyesSymbol();
     }
-
-
-
-
-
-
 }
 
 

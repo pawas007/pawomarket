@@ -3,7 +3,7 @@
 @section('pages')
 @section('title', 'Contact request')
 @include('pages.partials.messages')
-    @include('pages.partials.messages')
+
     <table class="table table-hover">
         <thead>
         <tr>

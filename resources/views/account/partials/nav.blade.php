@@ -38,7 +38,7 @@
                 </ul>
             </li>
 
-
+            <li><a href="{{ route('subscribers') }}"   class="@activeroute('subscribers')">    <i class="far fa-envelope"></i>subscribers</a></li>
 
             <li><a href="{{ route('contacts.admin') }}"   class="@activeroute('contacts.admin')">   <i class="far fa-list-alt"></i>Contact form</a></li>
         </ul>
