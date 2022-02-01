@@ -129,7 +129,7 @@ class CurrencyController extends Controller
     public function changeCurrency($id)
     {
        $currency =   Currency::find($id);
-       session(['currency' => $currency->code]);
+       session(['currency' => $currency->code,'currency_symbol' => $currency->symbol]);
        return redirect()->back();
     }
 

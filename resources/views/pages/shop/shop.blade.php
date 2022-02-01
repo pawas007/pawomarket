@@ -30,12 +30,12 @@
                 <div class="row">
                     @if(count($products))
                         @foreach($products as $product)
-                            {{$product->currency_symbol}}
 
 {{$product}}
-{{--                            @foreach($product->attribute_values as $val)--}}
-{{--                            --}}
-{{--                            @endforeach--}}
+
+                            {{--                            @foreach($product->attribute_values as $val)--}}
+                            {{--                            --}}
+                            {{--                            @endforeach--}}
                             <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                 <div class="product_wrappers_one">
                                     <div class="thumb">
@@ -69,7 +69,7 @@
                                     <div class="content">
                                         <h5 class="title"><a href="product-single.html">{{$product->name}}</a></h5>
                                         <div class="price">
-                                            <span class="new">{{$product->currency_symbol}} {{$product->price}}</span>
+                                            <span class="new">   {{$product->currency_symbol}} {{$product->price}}</span>
                                         </div>
                                     </div>
                                 </div>

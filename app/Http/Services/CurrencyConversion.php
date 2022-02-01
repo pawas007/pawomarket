@@ -6,14 +6,26 @@ use App\Models\Currency;
 
 class CurrencyConversion
 {
+
+
+    protected static $container;
+
+    public static function loadContainer()
+    {
+        if (is_null(self::$container)) {
+            self::$container = Currency::get();
+        }
+    }
+
     static function convert($price, $targetCurrencyCode = null)
     {
-        $mainCurrencyValue = Currency::where('is_main', true)->first();
+        self::loadContainer();
+        $mainCurrency = self::$container->firstWhere('is_main', 1);
         if (is_null($targetCurrencyCode)) {
-            $targetCurrencyCode = session('currency', $mainCurrencyValue->code);
-            $targetCurrencyValue = Currency::where('code', $targetCurrencyCode)->first();
+            $targetCurrencyCode = session('currency', $mainCurrency->code);
+            $targetCurrencyValue = self::$container->firstWhere('code', $targetCurrencyCode);
         }
-        $price = (float)$price / (float)$mainCurrencyValue->value * (float)$targetCurrencyValue->value;
-        return round($price,2);
+        $price = (float)$price / (float)$mainCurrency->value * (float)$targetCurrencyValue->value;
+        return round($price, 2);
     }
 }

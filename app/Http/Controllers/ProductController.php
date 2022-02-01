@@ -14,13 +14,26 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function someValue()
+    {
+        return 323;
+    }
+
+
     public function index(Request $request)
     {
 
-        $priceRange = ['max' => CurrencyConversion::convert(Product::max('price'))  ,'min'=>CurrencyConversion::convert(Product::min('price'))];
+        $priceRange = ['max' => 2 ,'min'=>3];
         $attributes = Attribute::with('values')->orderByDesc('name')->get();
 
-        $products = Product::with('attributeValues')->paginate(12)->withPath('?'.$request->getQueryString());
+        $products = Product::with('attributeValues' )->paginate(12)->withPath('?'.$request->getQueryString());
+
+
+
+
+
         return view('pages.shop.shop', compact('attributes','priceRange','products'));
     }
 

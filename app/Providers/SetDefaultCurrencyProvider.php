@@ -24,8 +24,9 @@ class SetDefaultCurrencyProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!session()->has('currency')){
-            session(['currency' => Currency::where('is_main',true)->first()->code]);
+        if (!session()->has('currency') && !session()->has('currency_symbol')){
+            $mainCurrency = Currency::where('is_main',true)->first();
+            return session(['currency' => $mainCurrency->code, 'currency_symbol' => $mainCurrency->symbol]);
         }
     }
 }

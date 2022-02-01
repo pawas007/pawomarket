@@ -17,9 +17,4 @@ class CurrencyProvider
         return $response = Http::get('https://freecurrencyapi.net/api/v2/latest', $params)->json();
     }
 
-    static function getCurrencyesSymbol()
-    {
-        return $symbol = Currency::where('code', session('currency'))->first()->symbol;
-    }
-
 }
