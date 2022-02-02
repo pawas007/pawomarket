@@ -44,8 +44,8 @@ Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create
 
 
 Route::resource('products', ProductController::class)->only('index','show');
-
-
+Route::post('product/comment/create', [ProductController::class, 'commentCreate'])->name('add.product.comment');
+//Product end
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
     Route::get('dashboard', function () {
         return view('account.pages.dashboard');

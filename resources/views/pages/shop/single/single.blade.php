@@ -13,15 +13,6 @@
     <script src="{{ asset('assets/js/theme/slick.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/slick-slider.js') }}" defer></script>
 @endpush
-
-
-
-
-
-
-
-
-
 <!-- Product Single Area -->
 <section id="product_single_two" class="ptb-100">
     <div class="container">
@@ -207,6 +198,7 @@
                                         <p class="h5">No Reviews</p>
                                     @endif
                                 </ul>
+                                @include('pages.shop.single.comments',['id'=> $product->id])
                             </div>
                         </div>
                     </div>

@@ -80,6 +80,15 @@ class ProductController extends Controller
         //
     }
 
+
+    public function commentCreate(Request $request)
+    {
+        dd('coment');
+    }
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
