@@ -50,10 +50,11 @@
                                         <div class="actions">
                                             <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
                                                     class="far fa-heart"></i></a>
-                                            <a href="#" class="action quickview" data-link-action="quickview"
-                                               title="Quick view"
-                                               data-toggle="modal" data-target="#exampleModalCenter"><i
+
+                                            <a href="/product/fastshow/{{$product->id}}"  class="action quickview"><i
                                                     class="fas fa-expand"></i></a>
+
+
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="fas fa-exchange-alt"></i></a>
                                         </div>
@@ -85,5 +86,8 @@
 </section>
 
 @include('pages.partials.instagram')
+
+@include('modals.fast-check')
+
 
 @endsection

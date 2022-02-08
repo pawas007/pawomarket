@@ -8,7 +8,7 @@ class CurrencyConversion
 {
 
 
-    protected static $container;
+    public static $container;
 
     public static function loadContainer()
     {

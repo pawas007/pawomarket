@@ -17,12 +17,14 @@ class Product extends Model
         'name',
         'slug',
         'price',
-        'sku',
+        'vendor_code',
+        'old_price',
         'description',
         'information',
         'new',
         'hot',
-        'image'
+        'image',
+
     ];
 
 
@@ -36,7 +38,7 @@ class Product extends Model
         return $value ? CurrencyConversion::convert($value) : null;
     }
 
-    public function attributeValues()
+    public function attributevalues()
     {
         return $this->belongsToMany(AttributeValue::class)->with('attribute');
 

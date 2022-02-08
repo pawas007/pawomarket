@@ -1,11 +1,11 @@
 <!-- Modal Area Start-->
-<div class="modal fade" id="fast_check_product" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div class="modal fade" id="fast_check_product">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="product_one_modal_top modal-content">
-            <button type="button" class="close close_modal_icon" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close close_modal_icon close_modal_fast">
                 <span aria-hidden="true"><i class="fas fa-times"></i></span>
             </button>
-            <div class="modal-body" id="product_slider_one">
+            <div class="modal-body product_modal" id="product_slider_one">
                 <div class="row">
                     <div class="col-lg-5 col-md-6 col-sm-12 col-12">
                         <div class="products_modal_sliders owl-carousel owl-theme">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-lg-7 col-md-6 col-sm-12 col-12">
                         <div class="modal_product_content_one">
-                            <h3>Black fashion handbag JI9023</h3>
+                            <h3 class="product-title">(Product name)</h3>
                             <div class="reviews_rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -29,10 +29,9 @@
                                 <i class="fas fa-star"></i>
                                 <span>(2 Customer Review)</span>
                             </div>
-                            <h4>$317.76</h4>
-                            <p>
-                                Standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                                type and scrambled it to make a type specimen.
+                            <h4 class="product_price" >(Product price)</h4>
+                            <p class="product_info">
+                                (Product info)
                             </p>
                             <div class="variable-single-item">
                                 <span>Color</span>

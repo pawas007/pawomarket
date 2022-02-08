@@ -341,7 +341,7 @@
         </div>
         <ul class="offcanvas-cart-action-button">
             <li>
-                <a href="cart.html" class="theme-btn-one btn-black-overlay btn_md">View Cart</a>
+                <a href="{{route('cart.index')}}" class="theme-btn-one btn-black-overlay btn_md">View Cart</a>
             </li>
             <li>
                 <a href="checkout.html" class="theme-btn-one btn-black-overlay btn_md">Checkout</a>

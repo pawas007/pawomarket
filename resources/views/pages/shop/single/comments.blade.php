@@ -42,6 +42,29 @@
                    type="email" name="email">
         </div>
         @endif
+
+        <div class="form-group col-md-12 product_rating">
+            <div class="rating_wrp d-flex flex-row-reverse">
+
+                <input type="radio" name="rating" value="5" id="r5">
+                <label for="r5"></label>
+
+                <input type="radio" name="rating" value="4" id="r4">
+                <label for="r4"></label>
+
+                <input type="radio" name="rating" value="3" id="r3">
+                <label for="r3"></label>
+
+                <input type="radio" name="rating" value="2" id="r2">
+                <label for="r2"></label>
+
+                <input type="radio" name="rating" value="1" id="r1" checked>
+                <label for="r1"></label>
+
+            </div>
+
+        </div>
+
         <div class="form-group col-md-12">
                                         <textarea rows="5"
                                                   name="message"

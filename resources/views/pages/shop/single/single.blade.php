@@ -62,7 +62,14 @@
             <div class="col-lg-8">
                 <div class="product_details_right_one">
                     <div class="modal_product_content_one">
-                        {{$product}}
+
+{{--@foreach($product->attribute_values as $value)--}}
+{{--{{$value}}--}}
+{{--                        @endforeach--}}
+
+                        <hr>
+                        {{$product->attributevalues}}
+                        <hr>
                         <h3>{{$product->name}} {{$product->vendor_code}}</h3>
                         <div class="reviews_rating">
                             @for( $i = 1; $i <= $ratingSummary;$i++)
@@ -178,16 +185,9 @@
                                                     </div>
                                                     <div class="media-pragraph">
                                                         <div class="product_review_strat">
-
                                                             @for( $i = 1; $i <= $comment->rating;$i++)
-
-
-                                                                <span><a href="#!"><i
-                                                                            class="fas fa-star"></i></a></span>
-
-
+                                                                <span><a href="#!"><i class="fas fa-star"></i></a></span>
                                                             @endfor
-
                                                         </div>
                                                         <p>{{$comment->message}}</p>
                                                     </div>

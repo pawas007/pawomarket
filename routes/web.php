@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\StaticPages;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,9 +43,12 @@ Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create
 //Contact us end
 
 
-
+Route::resource('cart', CartController::class)->only('index');
 Route::resource('products', ProductController::class)->only('index','show');
 Route::post('product/comment/create', [ProductController::class, 'commentCreate'])->name('add.product.comment');
+Route::get('product/fastshow/{id}', [ProductController::class, 'quickView']);
+
+
 //Product end
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function () {
     Route::get('dashboard', function () {

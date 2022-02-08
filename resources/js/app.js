@@ -5,6 +5,7 @@
  */
 
 require('./axios/createTagCategory')
+require('./axios/fastCheck')
 
 $('.drop_down_trigger').on('click', function (e) {
     e.preventDefault()
@@ -18,8 +19,8 @@ $('.custom-dropdown-trigger').on('click', function (e) {
 })
 
 let subHasActive = $('.sub-menu-custom a').hasClass('active');
-subHasActive &&$('.sub-menu-custom a.active').parent().parent().prev().addClass('active');
-subHasActive &&$('.sub-menu-custom a.active').parent().parent().parent().addClass('active');
+subHasActive && $('.sub-menu-custom a.active').parent().parent().prev().addClass('active');
+subHasActive && $('.sub-menu-custom a.active').parent().parent().parent().addClass('active');
 
 $('#postImage , #accountImage').on('change', function () {
         if (this.files[0]) {
@@ -32,6 +33,7 @@ $('#postImage , #accountImage').on('change', function () {
         }
     }
 );
+
 
 
 

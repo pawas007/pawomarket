@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Http\Services\CurrencyConversion;
 use App\Models\Attribute;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Response;
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -55,17 +59,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product->load('comments');
         $productRaring = [];
         foreach ($product->comments as $comment) {
             array_push($productRaring, $comment->rating);
         }
         $ratingSummary = $productRaring ? ceil(array_sum($productRaring) / count($productRaring)) : 0;
-
-
-
-
-
         return view('pages.shop.single.single', compact('product', 'ratingSummary'));
     }
 
@@ -81,12 +79,20 @@ class ProductController extends Controller
     }
 
 
-    public function commentCreate(Request $request)
+    public function commentCreate(CommentRequest $request)
+
     {
-        dd('coment');
+
+        $comment = new Comment();
+        $comment->commentable()->associate(Product::findOrFail($request->id));
+        $comment->email = $request->message;
+
+        $comment->rating = $request->rating;
+        $comment->message = $request->message;
+        $comment->name = $request->name;
+        $comment->save();
+        return redirect()->back()->withSuccess('Comment created');
     }
-
-
 
 
     /**
@@ -100,6 +106,17 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function quickView(Request $request): JsonResponse
+    {
+
+        $product = Product::where('id', $request->id)->with('attributeValues')->firstOrFail();
+
+        return Response::json($product);
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
