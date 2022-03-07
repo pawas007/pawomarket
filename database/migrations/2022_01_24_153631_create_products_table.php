@@ -22,9 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('vendor_code');
             $table->text('description');
             $table->text('information')->nullable();
-            $table->boolean('new')->nullable();
-            $table->boolean('hot')->nullable();
-            $table->string('image')->nullable();
+            $table->boolean('new')->default(0);
+            $table->boolean('hot')->default(0);
             $table->timestamps();
 //            $table->softDeletes();
         });

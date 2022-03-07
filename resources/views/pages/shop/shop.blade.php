@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="row">
-            @include('pages.shop.filter-sidebar',['attributes'=>$attributes,'priceRange'=>$priceRange])
+            @include('pages.shop.filter-sidebar',['priceRange'=>$priceRange])
             <div class="col-lg-9">
                 <div class="row">
                     @if(count($products))
@@ -35,9 +35,13 @@
                                 <div class="product_wrappers_one">
                                     <div class="thumb">
                                         <a href="{{route('products.show', $product)}}" class="image">
-                                            <img src="assets/img/product-image/product3.png" alt="Product">
-{{--                                            <img class="hover-image" src="assets/img/product-image/product4.png"--}}
-{{--                                                 alt="Product">--}}
+                                            @if(!isset($product->gallery[0]))
+                                                <img src="assets/img/no-image.jpg" alt="Product">
+                                            @else
+
+                                                @endif
+
+
                                         </a>
                                         <div class="badges">
                                             @if($product->hot)
@@ -58,9 +62,7 @@
                                             <a href="compare.html" class="action compare" title="Compare"><i
                                                     class="fas fa-exchange-alt"></i></a>
                                         </div>
-                                        <a href="#offcanvas-add-cart" title="Add To Cart"
-                                           class="add-to-cart offcanvas-toggle">Add
-                                            To Cart</a>
+                                        <a href="/addToCart" class="add-to-cart" data-productid="{{$product->id}}" data-quantity="1">Add To Cart</a>
                                     </div>
                                     <div class="content">
                                         <h5 class="title"><a href="{{route('products.show', $product)}}">{{$product->name}}</a></h5>
@@ -87,7 +89,7 @@
 
 @include('pages.partials.instagram')
 
-@include('modals.fast-check')
+
 
 
 @endsection

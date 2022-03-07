@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attribute;
 use Faker\Factory as Faker;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
@@ -33,7 +34,18 @@ class ProductSeeder extends Seeder
             $product->price = $faker->numberBetween(400,500);
             $product->old_price = $faker->numberBetween(600,700);
             $product->save();
-            $product->attributeValues()->sync([1,2,3,4,5]);
+
+
+
+            $attr = [
+                'color'=>'red',
+                'brand'=> 'zara'
+            ];
+
+            Attribute::create([
+                'product_id'=> $product->id,
+                'attributes' => json_encode($attr)
+            ]);
         }
     }
 }

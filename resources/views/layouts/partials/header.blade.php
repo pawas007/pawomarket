@@ -1,7 +1,4 @@
-
-
 @include('layouts.partials.header.preloader')
-
 @include('layouts.partials.header.top-header')
 
 
@@ -47,7 +44,7 @@
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="fas fa-shopping-bag"></i>
-                                    <span class="item-count">4</span>
+                                    <span class="item-count item-count-cart">     {{\Cart::getTotalQuantity()}}   </span>
                                 </a>
                             </li>
                             <li>
@@ -71,8 +68,7 @@
 <!-- Start Header Area -->
 
 <!-- Start Mobile Header -->
-<div
-    class="mobile-header sticky-header sticky-color--golden mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
+<div class="mobile-header sticky-header sticky-color--golden mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex align-items-center justify-content-between">
@@ -100,10 +96,15 @@
                                 <span class="item-count">3</span>
                             </a>
                         </li>
+
+
+
+
+
                         <li>
                             <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                 <i class="fas fa-shopping-bag"></i>
-                                <span class="item-count">4</span>
+                                <span class="item-count item-count-cart">{{\Cart::getTotalQuantity()}}</span>
                             </a>
                         </li>
                         <li>
@@ -250,107 +251,7 @@
 </div>
 <!-- ...:::: End Offcanvas Mobile Menu Section :::... -->
 
-<!-- Start Offcanvas Addcart Section -->
-<div id="offcanvas-add-cart" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
-    <!-- Start Offcanvas Header -->
-    <div class="offcanvas-header text-right">
-        <button class="offcanvas-close">
-            <img src="/assets/img/svg/cancel.svg" alt="icon"/>
-        </button>
-    </div>
-    <!-- End Offcanvas Header -->
 
-    <!-- Start  Offcanvas Addcart Wrapper -->
-    <div class="offcanvas-add-cart-wrapper">
-        <h4 class="offcanvas-title">Shopping Cart</h4>
-        <ul class="offcanvas-cart">
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="/assets/img/product-image/product1.png" alt="img" class="offcanvas-cart-image"/>
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$49.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="far fa-trash-alt"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="/assets/img/product-image/product2.png" alt="img" class="offcanvas-cart-image"/>
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                            <span class="offcanvas-cart-item-details-price">$500.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete">
-                        <i class="far fa-trash-alt"></i>
-                    </a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="/assets/img/product-image/product3.png" alt="img" class="offcanvas-cart-image"/>
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$350.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="far fa-trash-alt"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="/assets/img/product-image/product4.png" alt="img" class="offcanvas-cart-image"/>
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Woman Dress</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$250.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="far fa-trash-alt"></i></a>
-                </div>
-            </li>
-        </ul>
-        <div class="offcanvas-cart-total-price">
-            <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-            <span class="offcanvas-cart-total-price-value">$170.00</span>
-        </div>
-        <ul class="offcanvas-cart-action-button">
-            <li>
-                <a href="{{route('cart.index')}}" class="theme-btn-one btn-black-overlay btn_md">View Cart</a>
-            </li>
-            <li>
-                <a href="checkout.html" class="theme-btn-one btn-black-overlay btn_md">Checkout</a>
-            </li>
-        </ul>
-    </div>
-    <!-- End  Offcanvas Addcart Wrapper -->
-</div>
-<!-- End  Offcanvas Addcart Section -->
 
 <!-- Start Offcanvas Mobile Menu Section -->
 <div id="offcanvas-wishlish" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">

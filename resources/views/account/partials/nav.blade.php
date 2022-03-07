@@ -13,7 +13,21 @@
     </div>
     <div class="dashboard_tab_button">
         Admin panel
+
         <ul role="tablist" class="nav flex-column dashboard-list pt-2">
+
+            <li class="has-dropdown-custom">
+                <a href="#" class="custom-dropdown-trigger">
+                    Shop
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="sub-menu-custom">
+                    <li><a href="{{ route('products.create') }}"   class="@activeroute('products.create')">Add product</a></li>
+
+                </ul>
+            </li>
+
+
             <li class="has-dropdown-custom">
                 <a href="#" class="custom-dropdown-trigger">
 
@@ -39,6 +53,9 @@
             </li>
 
             <li><a href="{{ route('subscribers') }}"   class="@activeroute('subscribers')">    <i class="far fa-envelope"></i>subscribers</a></li>
+
+
+            <li><a href="{{ route('contacts.admin') }}"   class="@activeroute('contacts.admin')">   <i class="far fa-list-alt"></i>Contact form</a></li>
 
             <li><a href="{{ route('contacts.admin') }}"   class="@activeroute('contacts.admin')">   <i class="far fa-list-alt"></i>Contact form</a></li>
         </ul>

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "darryldecode/cart": "~4.0",
         "dymantic/laravel-instagram-feed": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -16,7 +17,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "phpfastcache/phpfastcache": "^9.0",
-        "raiym/instagram-php-scraper": "^0.12.0"
+        "raiym/instagram-php-scraper": "^0.12.0",
+        "unisharp/laravel-filemanager": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

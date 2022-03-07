@@ -16,6 +16,7 @@
     <script src="{{ asset('assets/js/theme/owl.carousel.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/menu.js') }}" defer></script>
     <script src="{{ asset('assets/js/theme/count.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" defer></script>
     <script src="{{ asset('assets/js/theme/custom.js') }}" defer></script>
     <script src="{{ asset('assets/js/app.js') }}" defer></script>
 @stack('scripts')

@@ -6,6 +6,9 @@
   ])
 @section('title', 'Cart')
 
+
+
+
 <section id="cart_area_two" class="ptb-100">
     <div class="container">
         <div class="row">
@@ -26,98 +29,55 @@
                             </thead> <!-- End Cart Table Head -->
                             <tbody>
                             <!-- Start Cart Single Item-->
-                            <tr>
-                                <td class="product_thumb">
-                                    <a href="product-single.html">
-                                        <img src="assets/img/product-image/product1.png" alt="img"></a>
-                                </td>
-                                <td class="product_name">
-                                    <a href="product-single.html">Handbag fringilla</a>
-                                </td>
-                                <td class="product-price">$65.00</td>
-                                <td class="product_quantity">
-                                    <div class="plus-minus-input">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button" data-quantity="minus"
-                                                    data-field="quantity1">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        <input class="form-control" type="number" name="quantity1" value="0">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button" data-quantity="plus"
-                                                    data-field="quantity1">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="product_total">$130.00</td>
-                                <td class="product_remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
-                            </tr> <!-- End Cart Single Item-->
-                            <!-- Start Cart Single Item-->
-                            <tr>
-                                <td class="product_thumb">
-                                    <a href="product-single.html">
-                                        <img src="assets/img/product-image/product2.png" alt="igm">
-                                    </a>
-                                </td>
-                                <td class="product_name">
-                                    <a href="product-single.html">Handbags justo</a>
-                                </td>
-                                <td class="product-price">$90.00</td>
-                                <td class="product_quantity">
-                                    <div class="plus-minus-input">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button" data-quantity="minus"
-                                                    data-field="quantity2">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        <input class="form-control" type="number" name="quantity2" value="0">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button" data-quantity="plus"
-                                                    data-field="quantity2">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="product_total">$180.00</td>
-                                <td class="product_remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-                            </tr> <!-- End Cart Single Item-->
-                            <!-- Start Cart Single Item-->
-                            <tr>
-                                <td class="product_thumb">
-                                    <a href="product-single.html">
-                                        <img src="assets/img/product-image/product4.png" alt="img">
-                                    </a>
-                                </td>
-                                <td class="product_name">
-                                    <a href="product-single.html">Handbag elit</a>
-                                </td>
-                                <td class="product-price">$80.00</td>
-                                <td class="product_quantity">
 
-                                    <div class="plus-minus-input">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button" data-quantity="minus"
-                                                    data-field="quantity3">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        <input class="form-control" type="number" name="quantity3" value="0">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button" data-quantity="plus"
-                                                    data-field="quantity3">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="product_total">$160.00</td>
-                                <td class="product_remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-                            </tr> <!-- End Cart Single Item-->
+
+
+
+                            @if(count($cardItems))
+
+                                @foreach($cardItems as $item)
+
+                                    <tr>
+
+                                        <td class="product_thumb">
+                                            {{$item}}
+                                            <a href="{{route('products.show', $item->id)}}">
+                                                <img src="assets/img/product-image/product1.png" alt="img"></a>
+                                        </td>
+                                        <td class="product_name">
+                                            <a href="{{route('products.show', $item->id)}}">{{$item->name}}</a>
+                                        </td>
+                                        <td class="product-price">{{$item->price}}</td>
+                                        <td class="product_quantity">
+                                            <div class="plus-minus-input">
+                                                <div class="input-group-button">
+                                                    <button type="button" class="button" data-quantity="minus"
+                                                            data-field="quantity1">
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+
+                                                <input class="form-control" type="number" name="quantity" value="{{$item->quantity}}">
+                                                <div class="input-group-button">
+                                                    <button type="button" class="button" data-quantity="plus"
+                                                            data-field="quantity">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product_total">{{$item->quantity * $item->price }} </td>
+                                        <td class="product_remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
+                                    </tr> <!-- End Cart Single Item-->
+
+
+                                @endforeach
+
+                                @endif
+
+
+
+
                             </tbody>
                         </table>
                     </div>

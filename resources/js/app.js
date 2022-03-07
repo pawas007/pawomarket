@@ -6,6 +6,8 @@
 
 require('./axios/createTagCategory')
 require('./axios/fastCheck')
+require('./axios/cart')
+require('./product-gallery')
 
 $('.drop_down_trigger').on('click', function (e) {
     e.preventDefault()

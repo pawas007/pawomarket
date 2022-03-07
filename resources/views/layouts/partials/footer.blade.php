@@ -109,6 +109,7 @@
         </div>
     </div>
 </section>
-
+@include('modals.cart')
+@include('modals.fast-check')
 @include('modals.cookie')
 

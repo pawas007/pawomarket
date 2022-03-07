@@ -1,10 +1,42 @@
-
 <div class="col-lg-3">
     <div class="shop_sidebar_wrapper">
         <div class="shop_Search">
-            <form action="SEARCH">
+            <form action="#!">
                 <input type="text" class="form-control" placeholder="Search...">
                 <button><img src="assets/img/svg/search.svg" alt="img"></button>
+            </form>
+        </div>
+        <div class="shop_sidebar_boxed">
+            <h4>Product Categories</h4>
+            <form action="#!">
+                <label class="custom_boxed">Woman Dresses
+                    <input type="radio" checked="checked" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">T-shirts
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Fashion
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Bags
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Jackets
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Shoes
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Jeans
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
             </form>
         </div>
         <div class="price_range shop_sidebar_boxed">
@@ -22,30 +54,99 @@
                 </div>
             </div>
         </div>
-        @foreach($attributes as $attribute)
-            <div class="shop_sidebar_boxed">
-                <h4>{{$attribute->name}}</h4>
-                @foreach($attribute->values as $value)
-                    @if($attribute->slug == 'colors')
-                        <div class="product-variable-color">
-                            <label for="modal-product-color-{{$value->value}}">
-                                <input id="modal-product-color-{{$value->value}}" class="color-select" type="checkbox"
-                                       name="attribute[]" value="{{$value->id}}">
-                                <span style="background: {{$value->color_code}}"></span>
-                            </label>
-                        </div>
-                    @else
-                        <label class="custom_boxed">
-                            {{$value->value}}
-                            <input type="checkbox" name="attribute[]" value="{{$value->id}}">
-                            <span class="checkmark"></span>
-                        </label>
-                    @endif
-                @endforeach
+        <div class="shop_sidebar_boxed">
+            <h4>Color</h4>
+            <div class="product-variable-color">
+                <label for="modal-product-color-red6">
+                    <input name="modal-product-color" id="modal-product-color-red6" class="color-select" type="radio" checked="">
+                    <span class="product-color-red"></span>
+                </label>
+                <label for="modal-product-color-tomato1">
+                    <input name="modal-product-color" id="modal-product-color-tomato1" class="color-select" type="radio">
+                    <span class="product-color-tomato"></span>
+                </label>
+                <label for="modal-product-color-green2">
+                    <input name="modal-product-color" id="modal-product-color-green2" class="color-select" type="radio">
+                    <span class="product-color-green"></span>
+                </label>
+                <label for="modal-product-color-light-green3">
+                    <input name="modal-product-color" id="modal-product-color-light-green3" class="color-select" type="radio">
+                    <span class="product-color-light-green"></span>
+                </label>
+                <label for="modal-product-color-blue4">
+                    <input name="modal-product-color" id="modal-product-color-blue4" class="color-select" type="radio">
+                    <span class="product-color-blue"></span>
+                </label>
+                <label for="modal-product-color-light-blue5">
+                    <input name="modal-product-color" id="modal-product-color-light-blue5" class="color-select" type="radio">
+                    <span class="product-color-light-blue"></span>
+                </label>
             </div>
-        @endforeach
+        </div>
+        <div class="shop_sidebar_boxed">
+            <h4>Size</h4>
+            <form action="#!" id="sizes_input">
+                <label class="custom_boxed">XS
+                    <input type="radio" checked="checked" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">S
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">M
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">L
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">XL
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+            </form>
+        </div>
+        <div class="shop_sidebar_boxed">
+            <h4>Brand</h4>
+            <form action="#!">
+                <label class="custom_boxed">Next
+                    <input type="radio" checked="checked" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Adidas
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Calvin Klein
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Nike
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">Geox
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom_boxed">River Island
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="clear_button">
+                    <button class="theme-btn-one btn_sm btn-black-overlay">Clear Filter</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+
+
+
+
 
 @push('scripts')
     <script>

@@ -2,84 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+
+use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+
 
 class CartController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.shop.cart.cart');
+        $cardItems = \Cart::getContent();
+
+            return view('pages.shop.cart.cart', compact(['cardItems']));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function addToCart(Request $request): JsonResponse
     {
-        //
+
+        try {
+            $quantity = $request->quantity ?: 1;
+            $productId = $request->productid;
+            $product = Product::find($productId);
+
+            \Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => (int)$quantity,
+                'associatedModel' => $product
+            ]);
+
+
+            return Response::json(['cartItems' => \Cart::getContent()->toArray()]);
+
+        } catch (Throwable $e) {
+
+            return Response::json($e);
+        }
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function cardCount(): JsonResponse
     {
-        //
+        $cardSubTotal = \Cart::getSubTotal();
+        $cardItemsCount = \Cart::getTotalQuantity();
+        return Response::json(['count' => $cardItemsCount, 'subTotal' => $cardSubTotal]);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cart $cart)
+
+    public function removeProductCart(Request $request): JsonResponse
     {
-        //
+
+
+        \Cart::remove($request->id);
+        return Response::json(['message' => 'success']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cart $cart)
-    {
-        //
-    }
 }

@@ -23,8 +23,6 @@ class Product extends Model
         'information',
         'new',
         'hot',
-        'image',
-
     ];
 
 
@@ -38,11 +36,20 @@ class Product extends Model
         return $value ? CurrencyConversion::convert($value) : null;
     }
 
-    public function attributevalues()
+    public function attributes()
     {
-        return $this->belongsToMany(AttributeValue::class)->with('attribute');
+        return $this->hasOne(Attribute::class, 'product_id', 'id');
 
     }
+
+
+
+    public function gallery()
+    {
+        return $this->hasMany(ProductGallery::class);
+
+    }
+
 
     public function getCurrencySymbolAttribute()
     {

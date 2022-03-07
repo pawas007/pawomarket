@@ -19,57 +19,34 @@
         <div class="row area_boxed">
             <div class="col-lg-4">
                 <div class="product_single_two_img slider-for">
-                    <div class="product_img_two_slider">
-                        <img src="/assets/img/product-image/product1.png" alt="img"/>
-                    </div>
-                    <div class="product_img_two_slider">
-                        <img src="/assets/img/product-image/product2.png" alt="img"/>
-                    </div>
-                    <div class="product_img_two_slider">
-                        <img src="/assets/img/product-image/product3.png" alt="img"/>
-                    </div>
-                    <div class="product_img_two_slider">
-                        <img src="/assets/img/product-image/product4.png" alt="img"/>
-                    </div>
-                    <div class="product_img_two_slider">
-                        <img src="/assets/img/product-image/product5.png" alt="img"/>
-                    </div>
-                    <div class="product_img_two_slider">
-                        <img src="/assets/img/product-image/product6.png" alt="img"/>
-                    </div>
+                    @if(!isset($product->gallery[0]))
+                        <img src="assets/img/no-image.jpg" alt="Product">
+                    @else
+                        @foreach($product->gallery as $gallery)
+                            <div class="nav_img">
+                                <img src="{{Storage::url($gallery->image) }}" alt="{{$product->name}}"/>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="slider-nav">
-                    <div class="nav_img">
-                        <img src="/assets/img/product-image/product1.png" alt="img"/>
-                    </div>
-                    <div class="nav_img">
-                        <img src="/assets/img/product-image/product2.png" alt="img"/>
-                    </div>
-                    <div class="nav_img">
-                        <img src="/assets/img/product-image/product3.png" alt="img"/>
-                    </div>
-                    <div class="nav_img">
-                        <img src="/assets/img/product-image/product4.png" alt="img"/>
-                    </div>
-                    <div class="nav_img">
-                        <img src="/assets/img/product-image/product5.png" alt="img"/>
-                    </div>
-                    <div class="nav_img">
-                        <img src="/assets/img/product-image/product6.png" alt="img"/>
-                    </div>
+                    @if(!isset($product->gallery[0]))
+                        <img src="assets/img/no-image.jpg" alt="Product">
+                    @else
+                        @foreach($product->gallery as $gallery)
+                            <div class="nav_img">
+                                <img src="{{Storage::url($gallery->image) }}" alt="{{$product->name}}"/>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="product_details_right_one">
                     <div class="modal_product_content_one">
 
-{{--@foreach($product->attribute_values as $value)--}}
-{{--{{$value}}--}}
-{{--                        @endforeach--}}
 
-                        <hr>
-                        {{$product->attributevalues}}
-                        <hr>
+
                         <h3>{{$product->name}} {{$product->vendor_code}}</h3>
                         <div class="reviews_rating">
                             @for( $i = 1; $i <= $ratingSummary;$i++)

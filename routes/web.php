@@ -15,6 +15,7 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\StaticPages;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\CartController;
+use App\Http\Services\CartService;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,9 +45,27 @@ Route::post('new-contacts', [ContactUsController::class, 'store'])->name('create
 
 
 Route::resource('cart', CartController::class)->only('index');
+Route::post('cart/add', [CartController::class,'addToCart']);
+Route::post('cart/count', [CartController::class,'cardCount']);
+Route::post('cart/remove', [CartController::class,'removeProductCart']);
+
+
+
+
+
+
+
+
+
+
 Route::resource('products', ProductController::class)->only('index','show');
 Route::post('product/comment/create', [ProductController::class, 'commentCreate'])->name('add.product.comment');
 Route::get('product/fastshow/{id}', [ProductController::class, 'quickView']);
+
+
+
+
+
 
 
 //Product end
@@ -75,6 +94,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::get('post/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
         Route::get('post/search', [PostController::class, 'searchPostAdmin'])->name('post.admin.search');
         Route::patch('post/update/{id}', [PostController::class, 'update'])->name('post.admin.update');
+        Route::resource('products', ProductController::class)->only('store','create');
+
 
     });
 

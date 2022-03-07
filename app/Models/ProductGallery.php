@@ -5,15 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AttributeValue extends Model
+class ProductGallery extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
-
-
-    public function attribute()
-    {
-        return $this->belongsTo(Attribute::class);
-    }
+    protected $fillable = ['product_id','image','position'];
 }

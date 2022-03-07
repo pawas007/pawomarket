@@ -2069,6 +2069,10 @@ __webpack_require__(/*! ./axios/createTagCategory */ "./resources/js/axios/creat
 
 __webpack_require__(/*! ./axios/fastCheck */ "./resources/js/axios/fastCheck.js");
 
+__webpack_require__(/*! ./axios/cart */ "./resources/js/axios/cart.js");
+
+__webpack_require__(/*! ./product-gallery */ "./resources/js/product-gallery.js");
+
 $('.drop_down_trigger').on('click', function (e) {
   e.preventDefault();
   $(this).parent().toggleClass('drop_active');
@@ -2088,6 +2092,68 @@ $('#postImage , #accountImage').on('change', function () {
       document.getElementById('uploadedImage').setAttribute('src', event.target.result);
     });
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/axios/cart.js":
+/*!************************************!*\
+  !*** ./resources/js/axios/cart.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var updateCartItems = function updateCartItems(items) {
+  var toArray = Object.values(items);
+  var products = '';
+  toArray.forEach(function (element) {
+    products += "\n      <li class=\"offcanvas-cart-item-single\">\n                        <div class=\"offcanvas-cart-item-block\">\n                            <a href=\"/products/".concat(element.id, "\" class=\"offcanvas-cart-item-image-link\">\n                                <img src=\"/assets/img/product-image/product1.png\" alt=\"img\"\n                                     class=\"offcanvas-cart-image\"/>\n                            </a>\n                            <div class=\"offcanvas-cart-item-content\">\n                                <a href=\"{{route('products.show',$item->id)}}\"\n                                   class=\"offcanvas-cart-item-link\">").concat(element.name, "</a>\n                                <div class=\"offcanvas-cart-item-details\">\n                                    <span class=\"offcanvas-cart-item-details-quantity\">").concat(element.quantity, " x </span>\n                                    <span\n                                        class=\"offcanvas-cart-item-details-price\">").concat(element.associatedModel.currency_symbol, "  ").concat(element.price, "</span>\n                                </div>\n                            </div>\n                        </div>\n\n                        <a href=\"remove\" data-productid=\"").concat(element.id, "\"\n                           class=\"offcanvas-cart-item-delete cart-item-delete\"><i class=\"far fa-trash-alt\"></i></a></li>\n");
+  });
+  $('.offcanvas-cart-modal').html(products);
+};
+
+var updateCart = function updateCart() {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('cart/count').then(function (response) {
+    if (!response.data.count) {
+      $('.empty_text_wrap').html('<h5 class="h5 empty-cart-text">Cart is empty </h5>');
+    } else {
+      $('.empty-cart-text').remove();
+    }
+
+    $('.subTotalCart').text(response.data.subTotal);
+    $('.item-count-cart').each(function () {
+      $(this).text(response.data.count);
+    });
+  });
+};
+
+$('.add-to-cart').on('click', function (e) {
+  e.preventDefault();
+  var data = {
+    quantity: 1,
+    productid: $(this).data('productid')
+  };
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post('/cart/add', data).then(function (response) {
+    updateCartItems(response.data.cartItems);
+    updateCart();
+  })["catch"](function (error) {
+    console.log(error);
+  });
+});
+$('body').on('click', '.cart-item-delete', function (e) {
+  e.preventDefault();
+  $(this).parent().remove();
+  var data = {
+    id: $(this).data('productid')
+  };
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post('cart/remove', data).then(function (response) {
+    updateCart();
+  });
 });
 
 /***/ }),
@@ -2191,6 +2257,103 @@ $('.quickview').on('click', function (e) {
 $('.close_modal_fast').on('click', function (e) {
   e.preventDefault();
   $('#fast_check_product').removeClass('show');
+});
+
+/***/ }),
+
+/***/ "./resources/js/product-gallery.js":
+/*!*****************************************!*\
+  !*** ./resources/js/product-gallery.js ***!
+  \*****************************************/
+/***/ (() => {
+
+// $('#change_position').click(function(e){
+//     e.preventDefault();
+//     let positions = [];
+//     $('.brick').each(function(i,elem) {
+//         positions[$(this).data('position')] = $(this).data('id');
+//     });
+// });
+//
+//
+//
+// let preloaded = [
+//     {id: 1, src: 'https://picsum.photos/500/500?random=1'},
+//     {id: 2, src: 'https://picsum.photos/500/500?random=2'},
+//     {id: 3, src: 'https://picsum.photos/500/500?random=3'},
+//     {id: 4, src: 'https://picsum.photos/500/500?random=4'},
+//     {id: 5, src: 'https://picsum.photos/500/500?random=5'},
+//     {id: 6, src: 'https://picsum.photos/500/500?random=6'},
+// ];
+// $('.input-images-1').imageUploader({
+//     preloaded: preloaded,
+//     imagesInputName: 'gallery',
+//     preloadedInputName: 'old'
+// });
+jQuery(document).ready(function () {
+  ImgUpload();
+});
+
+function ImgUpload() {
+  var imgWrap = "";
+  var imgArray = [];
+  $('.upload__inputfile').each(function () {
+    $(this).on('change', function (e) {
+      imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+      var maxLength = $(this).attr('data-max_length');
+      var files = e.target.files;
+      var filesArr = Array.prototype.slice.call(files);
+      var iterator = 0;
+      filesArr.forEach(function (f, index) {
+        if (!f.type.match('image.*')) {
+          return;
+        }
+
+        if (imgArray.length > maxLength) {
+          return false;
+        } else {
+          var len = 0;
+
+          for (var i = 0; i < imgArray.length; i++) {
+            if (imgArray[i] !== undefined) {
+              len++;
+            }
+          }
+
+          if (len > maxLength) {
+            return false;
+          } else {
+            imgArray.push(f);
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+              imgWrap.append(html);
+              iterator++;
+            };
+
+            reader.readAsDataURL(f);
+          }
+        }
+      });
+    });
+  });
+  $('body').on('click', ".upload__img-close", function (e) {
+    var file = $(this).parent().data("file");
+
+    for (var i = 0; i < imgArray.length; i++) {
+      if (imgArray[i].name === file) {
+        imgArray.splice(i, 1);
+        break;
+      }
+    }
+
+    $(this).parent().parent().remove();
+  });
+}
+
+$(function () {
+  $('.upload__img-wrap').sortable();
 });
 
 /***/ }),

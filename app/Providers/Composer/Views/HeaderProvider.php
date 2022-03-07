@@ -32,6 +32,7 @@ class HeaderProvider extends ServiceProvider
         $mainCurrency = Currency::where('is_main',true)->firstOrFail();
         View::composer([
             'layouts.partials.header.top-header',
+            'modals.cart',
         ], function ($view) use ($currency,$mainCurrency) {
             return $view->with(['currency'=> $currency,'mainCurrency'=>$mainCurrency ]);
         });

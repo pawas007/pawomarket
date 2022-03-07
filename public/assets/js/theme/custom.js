@@ -259,4 +259,10 @@
             .delay(350)
             .fadeOut("slow");
     });
+
+
+
+
+
+
 }(jQuery));

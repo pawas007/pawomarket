@@ -174,8 +174,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
 
         /*
          * View composers & custom providers
@@ -184,6 +186,7 @@ return [
         \App\Providers\Composer\Views\InstagramProvider::class,
         \App\Providers\Composer\Views\HeaderProvider::class,
         \App\Providers\SetDefaultCurrencyProvider::class,
+
 
     ],
 
@@ -241,6 +244,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
     ],
 
 ];
