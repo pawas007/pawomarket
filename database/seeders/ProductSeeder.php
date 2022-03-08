@@ -37,15 +37,6 @@ class ProductSeeder extends Seeder
 
 
 
-            $attr = [
-                'color'=>'red',
-                'brand'=> 'zara'
-            ];
-
-            Attribute::create([
-                'product_id'=> $product->id,
-                'attributes' => json_encode($attr)
-            ]);
         }
     }
 }

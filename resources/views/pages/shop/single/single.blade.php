@@ -20,7 +20,7 @@
             <div class="col-lg-4">
                 <div class="product_single_two_img slider-for">
                     @if(!isset($product->gallery[0]))
-                        <img src="assets/img/no-image.jpg" alt="Product">
+                        <img src="/assets/img/no-image.jpg" alt="Product">
                     @else
                         @foreach($product->gallery as $gallery)
                             <div class="nav_img">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="slider-nav">
                     @if(!isset($product->gallery[0]))
-                        <img src="assets/img/no-image.jpg" alt="Product">
+                        <img src="/assets/img/no-image.jpg" alt="Product">
                     @else
                         @foreach($product->gallery as $gallery)
                             <div class="nav_img">

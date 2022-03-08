@@ -20,13 +20,13 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = Product::all();
-        $priceRange = ['max' => CurrencyConversion::convert(Product::max('price')), 'min' => CurrencyConversion::convert(Product::min('price'))];
-        $products = Product::with('attributes')->paginate(12)->withPath('?' . $request->getQueryString());
-        $productAttributes = [];
-        foreach ($products as $product) {
-            array_push($productAttributes, json_decode($product->attributes, true));
-        }
+        $products = Product::paginate(12)->withPath('?' . $request->getQueryString());
+       $priceRange = ['max' => CurrencyConversion::convert(Product::max('price')), 'min' => CurrencyConversion::convert(Product::min('price'))];
+//        $products = Product::with('attributes')->paginate(12)->withPath('?' . $request->getQueryString());
+//        $productAttributes = [];
+//        foreach ($products as $product) {
+//            array_push($productAttributes, json_decode($product->attributes, true));
+//        }
         return view('pages.shop.shop', compact('priceRange', 'products'));
     }
 

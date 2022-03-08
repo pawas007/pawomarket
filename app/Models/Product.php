@@ -36,11 +36,7 @@ class Product extends Model
         return $value ? CurrencyConversion::convert($value) : null;
     }
 
-    public function attributes()
-    {
-        return $this->hasOne(Attribute::class, 'product_id', 'id');
 
-    }
 
 
 
